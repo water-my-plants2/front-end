@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import plantReducer from './reducers/index';
+import { plantReducer } from './reducers/index';
 
 const store = createStore(plantReducer, applyMiddleware(logger, thunk));
 

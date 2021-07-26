@@ -3,7 +3,7 @@ import { START_FETCH_PLANTS,
     FAIL_FETCH_PLANTS,
     ADD_PLANT, 
     DELETE_PLANT,
-    SET_VALUE_TO_ERROR_MESSAGE } from '../actions/plantActions.js';
+    SET_VALUE_TO_ERROR_MESSAGE } from '../actions/index.js';
 
 export const initialState = {
     plants: [],
