@@ -18,10 +18,12 @@ function App() {
 
   //Return function
   return (
-    <div className="app">
-      <Route exact path="/" component={HomePage} />
-      <Route path="/Signup" component={Signup} />
-    </div>
+    <Router>
+      <div className="app">
+        <Route exact path="/" component={HomePage} />
+        <Route path="/Signup" component={Signup} />
+      </div>
+    </Router>
   );
 }
 
