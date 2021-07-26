@@ -14,7 +14,7 @@ function TextField({ label, type, ...props }) {
         autoComplete="off"
         className={`form-control ${meta.touched && meta.error && "is-invalid"}`}
       />
-      <ErrorMessage name={field.name} component="p" className="error" />
+      <ErrorMessage name={field.name} component="p" className="signup-error" />
     </div>
   );
 }

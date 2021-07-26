@@ -1,11 +1,24 @@
+//Import statements
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import PlantList from "./components/PlantList";
+import Styled from "styled-components";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Switch,
+  Route,
+} from "react-router-dom";
+// import Dummy from "./components/Dummy";
+// import HomePage from "./components/HomePage";
+import Signup from "./components/Signup.js";
+import Login from "./components/Login.js";
+import PlantList from "./components/PlantList.js";
 
+//Main function
 function App() {
+  //Declare state variables
+
+  //Return function
   return (
   <div className="App">
     <Router>
@@ -17,4 +30,5 @@ function App() {
   );
 }
 
+//Export statement
 export default App;
