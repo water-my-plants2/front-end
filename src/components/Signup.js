@@ -41,7 +41,7 @@ function Signup(props) {
               label="Phone Number"
               name="user_phone"
               type="tel"
-              placeholder="000-000-0000"
+              placeholder="012-345-6789"
             />
             <button type="submit" className="btn-dark">
               Register
