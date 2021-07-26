@@ -20,7 +20,7 @@ export const fetchPlants = () => {
     }
 }
 
-export const addPlant = (smurf) => {
+export const addPlant = (plant) => {
     return({type:ADD_PLANT, payload:plant});
 }
 
@@ -32,7 +32,7 @@ export const fetchStart = ()=> {
     return({type: START_FETCH_PLANTS});
 }
 
-export const fetchSuccess = (smurfs)=> {
+export const fetchSuccess = (plants)=> {
     return({type: SUCCESS_FETCH_PLANTS, payload:plants});
 }
 
