@@ -67,6 +67,9 @@ body {
   background-color: #3a5f0b;
   font-size: 1rem;
   color: white;
+  padding: 8px;
+  border-radius: 50%;
+  border:4px inset rgb(139, 153, 146);
 }
 
 .signup-wrap {
