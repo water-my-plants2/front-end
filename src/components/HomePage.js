@@ -33,8 +33,12 @@ function HomePage(props)
 
           <div className = "labelDiv">
             
-            {/* Login button */}
-            <button exact to = "/Login" className = "ButtonStyle1" id = "login">  Log In </button>
+          <div className="login">
+            <NavLink exact to="/Login" className="ButtonStyle" id="login" style={{ textDecoration: 'none', color:"white"}}>
+              {" "}
+              Log In
+            </NavLink>
+          </div>
 
             {/* Username label/input */}
             <label htmlFor = "username">
@@ -47,7 +51,12 @@ function HomePage(props)
             </label>
 
             {/* Sign up button */}
-            <button to = "/Signup" className="ButtonStyle" id="signup"> Sign Up!</button>
+            <div className="signup">
+            <NavLink exact to="/Signup" className="ButtonStyle" id="signup"style={{ textDecoration: 'none', color:"white"}}>
+              {" "}
+              Sign Up!{" "}
+            </NavLink>
+          </div>
           </div>
 
         </header>

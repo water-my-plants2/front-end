@@ -36,16 +36,6 @@ header
   padding-top: 2.5%;
 }
 
-h2 
-{
-  /* display: flex;
-  flex-direction: row;
-  justify-content: left;
-  padding-right: 40px;
-  text-align: center;
-   */
-}
-
 body 
 {
   display: flex;
@@ -61,21 +51,49 @@ body
   overflow: hidden;
 }
 
-.ButtonStyle 
+.signup 
 {
   background-color: #3a5f0b;
   width: 15%;
   color: white;
+  font-size: 65%;
+  text-decoration: ;
+}
+
+.login
+{
+  background-color: #3a5f0b;
+  width: 15%;
+  
   font-size: 65%;
 }
 
-.ButtonStyle1 
-{
-  background-color: #3a5f0b;
-  width: 15%;
-  color: white;
-  font-size: 65%;
+
+.signup-wrap {
+  padding-top: 1rem;
+  width: 30rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
+
+.signup-textfield {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.signup-btn-reset {
+  margin-left: 1rem;
+}
+
+.signup-error {
+  position: absolute;
+  color: red;
+  font-size: 0.7rem;
+  transform: translateY(4rem);
+}
+
 
 .signup-wrap {
   padding-top: 1rem;
