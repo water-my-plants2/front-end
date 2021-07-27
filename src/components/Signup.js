@@ -1,10 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Formik, Form } from "formik";
 import TextField from "./TextField";
 import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Signup(props) {
+  const history = useHistory();
   const schema = yup.object({
     username: yup.string().required("Username is Required"),
     password: yup.string().required("Password is Required"),
@@ -23,7 +25,10 @@ function Signup(props) {
         user_phone: "",
       }}
       validationSchema={schema}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values);
+        history.push("plantlist");
+      }}
     >
       {(formik) => (
         <div className="signup-wrap">
