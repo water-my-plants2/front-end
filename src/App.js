@@ -13,6 +13,7 @@ import {
 import Signup from "./components/Signup.js";
 import Login from "./components/Login.js";
 import PlantList from "./components/PlantList.js";
+import HomePage from "./components/HomePage";
 
 //Main function
 function App() {
@@ -20,13 +21,13 @@ function App() {
 
   //Return function
   return (
-  <div className="App">
-    <Router>
-      <Route exact path="/" component={Login} />
-      <Route path="/signup" component={Signup} />
-      <Route path="/plantlist" component={PlantList} />
-    </Router>
-  </div>
+    <div className="App">
+      <Router>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/plantlist" component={PlantList} />
+      </Router>
+    </div>
   );
 }
 
