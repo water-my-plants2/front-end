@@ -3,12 +3,12 @@ import React from "react";
 
 const Card = (props) => {
 
-    const { nickname, species, h2oFrequency } = props.plant;
+    const { nickname, species, h2oFrequency, image } = props.plant;
 
    return (
     <div class="plant-card">
         <div class ="box">
-            
+            <img href={image}></img>
         </div>
         <p>{nickname} -- {species}</p>
         <div class="progress"> 
