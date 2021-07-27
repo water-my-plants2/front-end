@@ -1,7 +1,12 @@
 import Card from './Card'
 import React from "react";
+import { connect } from 'react-redux';
 import '../index.css';
-export default function PlantList(){
+
+const PlantList = (props) => {
+
+    const plants = props.plants;
+
     return (
         <div class="container">
             <div class="add-section">
@@ -10,11 +15,20 @@ export default function PlantList(){
                 </button>
             </div>
             <div class="card-section">
-                <Card />
-                <Card />
-                <Card />
+                {
+                plants.map(plant=><Card key={plant.id} plant={plant} />)
+                }
             </div>
 
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+      plants: state.plants
+    }
+}
+  
+export default connect(mapStateToProps)(PlantList);
