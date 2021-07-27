@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 export const ADD_PLANT = "ADD_PLANT";
 export const DELETE_PLANT = "DELETE_PLANT";

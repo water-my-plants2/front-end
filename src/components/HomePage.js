@@ -1,18 +1,18 @@
 import React from "react";
-import Styled from "styled-components";
+// import Styled from "styled-components";
 import { NavLink, Switch, Route } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
 import Dummy from "./Dummy";
 import LoginForm from "./LoginForm";
 
 //Input styled component
-const BoxStyle = Styled.input`
-    width: 90%;
-    padding-left: 1%;
-    padding-right: 1%;
-    height: 2vh;
+// const BoxStyle = Styled.input`
+  //   width: 90%;
+  //   padding-left: 1%;
+  //   padding-right: 1%;
+  //   height: 2vh;
 
-  `;
+  // `;
 
 function HomePage(props) {
   return (
@@ -26,7 +26,7 @@ function HomePage(props) {
             <h1> Water My Plants</h1>{" "}
           </div>
 
-          <LoginForm />
+          <LoginForm login={props.login} />
 
           {/* Sign up button */}
           <div className="signup">

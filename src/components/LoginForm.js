@@ -25,7 +25,7 @@ function LoginTextField(props) {
   );
 }
 
-function LoginForm() {
+function LoginForm(props) {
   const history = useHistory();
   const [hasLabel, setHasLabel] = useState(false);
 
@@ -41,6 +41,7 @@ function LoginForm() {
       }}
       onSubmit={(values) => {
         console.log(values);
+        props.login(values);
         history.push("/plantlist");
       }}
       validationSchema={schema}
