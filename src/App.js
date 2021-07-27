@@ -17,6 +17,7 @@ import Signup from "./components/Signup.js";
 import LoginForm from "./components/LoginForm.js";
 import PlantList from "./components/PlantList.js";
 import HomePage from "./components/HomePage";
+import AddPlant from "./components/AddPlant";
 import { create } from "yup/lib/array";
 
 //Main function
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/signup" component={Signup} />
         <Route path="/plantlist" component={PlantList} />
+        <Route path="/plantlist/add" component={AddPlant} />
       </Router>
     </div>
   );

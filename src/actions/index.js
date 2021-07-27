@@ -9,22 +9,22 @@ export const SET_VALUE_TO_ERROR_MESSAGE = "SET_VALUE_TO_ERROR_MESSAGE";
 
 const dummyData = [{
     id: 1,
-    nickname: "Spider Plant dummy",
+    nickname: "Spider Plant redux",
     species: "Chlorophytum Comosum",
     h2oFrequency: 3,
-    image: ""
+    image: "https://www.houseplantsexpert.com/image-files/spiderplant.jpg"
 },{
     id: 2,
-    nickname: "Aloe Vera dummy",
+    nickname: "Aloe Vera redux",
     species: "Aloe",
     h2oFrequency: 1,
-    image: ""
+    image: "https://www.houseplantsexpert.com/image-files/aloevera.jpg"
 },{
     id: 3,
-    nickname: "Peace Lily dummy",
+    nickname: "Peace Lily redux",
     species: "Spathiphyllum Wallisii",
     h2oFrequency: 5,
-    image: ""
+    image: "https://www.houseplantsexpert.com/image-files/peace-lily.jpg"
 }]
 
 export const fetchPlants = () => {
