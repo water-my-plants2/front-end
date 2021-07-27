@@ -26,7 +26,8 @@ function HomePage(props) {
 
           {/* Login Button */}
           <div className="login">
-            <NavLink exact to="/Login" className="ButtonStyle" id="login">
+            <NavLink exact to="/Login" className="ButtonStyle" id="login"style={{ textDecoration: 'none', color:"white"}}>
+              {" "}
               {" "}
               Log In
             </NavLink>
@@ -56,7 +57,8 @@ function HomePage(props) {
 
           {/* Sign up button */}
           <div className="signup">
-            <NavLink exact to="/Signup" className="ButtonStyle" id="signup">
+            <NavLink exact to="/Signup" className="ButtonStyle" id="signup"style={{ textDecoration: 'none', color:"white"}}>
+              {" "}
               {" "}
               Sign Up!{" "}
             </NavLink>
