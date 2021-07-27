@@ -1,11 +1,17 @@
 import Card from './Card'
-import React from "react";
+import React, { useEffect }  from "react";
 import { connect } from 'react-redux';
+import { fetchPlants } from '../actions/index';
 import '../index.css';
 
 const PlantList = (props) => {
 
     const plants = props.plants;
+
+    useEffect(() => {
+       props.dispatch(fetchPlants());
+    }, []);
+  
 
     return (
         <div class="container">
@@ -25,7 +31,6 @@ const PlantList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
       plants: state.plants
     }

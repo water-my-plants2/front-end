@@ -19,8 +19,6 @@ import PlantList from "./components/PlantList.js";
 import HomePage from "./components/HomePage";
 import { create } from "yup/lib/array";
 
-const store = createStore(plantReducer);
-
 //Main function
 function App() {
   //Declare state variables
@@ -29,11 +27,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Provider store={store}>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/plantlist" component={PlantList} />
-        </Provider>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/plantlist" component={PlantList} />
       </Router>
     </div>
   );

@@ -8,19 +8,19 @@ import { START_FETCH_PLANTS,
 export const initialState = {
     plants: [{
         id: 1,
-        nickname: "Spider Plant",
+        nickname: "Spider Plant initial",
         species: "Chlorophytum Comosum",
         h2oFrequency: 3,
         image: ""
     },{
         id: 2,
-        nickname: "Aloe Vera",
+        nickname: "Aloe Vera initial",
         species: "Aloe",
         h2oFrequency: 1,
         image: ""
     },{
         id: 3,
-        nickname: "Peace Lily",
+        nickname: "Peace Lily initial",
         species: "Spathiphyllum Wallisii",
         h2oFrequency: 5,
         image: ""
