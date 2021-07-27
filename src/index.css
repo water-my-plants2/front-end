@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.container{
+  border: 1px solid red;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.card{
+  width: 33%;
+  margin: 0 12px;
+  height: 300px;
+  float: left;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.edit{
+  width: 65px;
+  height: 20px;
+}
+.add-section{
+  display: flex;
+  align-self: flex-end;
+}
+
+.card-section{
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
+  border: 1px solid;
+}
