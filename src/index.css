@@ -68,6 +68,9 @@ code {
   border-radius: 6px;
   margin-top: 0px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 p {
