@@ -2,7 +2,8 @@ import React from "react";
 import Styled from "styled-components";
 import { NavLink, Switch, Route } from "react-router-dom";
 import Dummy from "./Dummy";
-
+import PlantList from "./PlantList";
+ 
 //Input styled component
 const BoxStyle = Styled.input`
     width: 90%;
@@ -11,7 +12,7 @@ const BoxStyle = Styled.input`
     height: 2vh;
 
   `;
-
+//
 function HomePage(props) {
   return (
     <div>
