@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { ErrorMessage, Formik, Form, useField } from "formik";
 import TextField from "./TextField";
 import * as yup from "yup";
@@ -25,6 +26,7 @@ function LoginTextField(props) {
 }
 
 function LoginForm() {
+  const history = useHistory();
   const [hasLabel, setHasLabel] = useState(false);
 
   const schema = yup.object({
@@ -37,7 +39,10 @@ function LoginForm() {
         username: "",
         password: "",
       }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values);
+        history.push("/plantlist");
+      }}
       validationSchema={schema}
     >
       {(formik) => (
