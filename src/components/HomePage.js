@@ -23,7 +23,7 @@ function HomePage(props) {
         <header className="header-wrap">
           {/* H1 */}
           <div>
-            <h1> Water My Plants</h1>{" "}
+            <h1> Water My Plants</h1>
           </div>
 
           <LoginForm />
@@ -31,8 +31,7 @@ function HomePage(props) {
           {/* Sign up button */}
           <div className="signup">
             <NavLink exact to="/Signup" className="ButtonStyle" id="signup">
-              {" "}
-              Sign Up!{" "}
+              Sign Up!
             </NavLink>
           </div>
         </header>
