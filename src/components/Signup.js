@@ -41,14 +41,14 @@ function Signup(props) {
               name="username"
               type="text"
               className="signup-textfield"
-              hasLabel={hasLabel}
+              // hasLabel={hasLabel}
             />
             <TextField
               label="Password"
               name="password"
               type="password"
               className="signup-textfield"
-              hasLabel={hasLabel}
+              // hasLabel={hasLabel}
             />
             <TextField
               label="Email"
@@ -56,7 +56,7 @@ function Signup(props) {
               type="email"
               placeholder="optional"
               className="signup-textfield"
-              hasLabel={hasLabel}
+              // hasLabel={hasLabel}
             />
             <TextField
               label="Phone Number"
@@ -64,7 +64,7 @@ function Signup(props) {
               type="tel"
               placeholder="012-345-6789"
               className="signup-textfield"
-              hasLabel={hasLabel}
+              // hasLabel={hasLabel}
             />
             <button type="submit" className="btn-dark">
               Register

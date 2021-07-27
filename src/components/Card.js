@@ -8,7 +8,7 @@ const Card = (props) => {
    return (
     <div class="plant-card">
         <div class ="box">
-            <img src={image}></img>
+            <img src={image} alt="plant"></img>
         </div>
         <p>{nickname} -- {species}</p>
         <div class="progress"> 
