@@ -3,6 +3,7 @@ import Styled from "styled-components";
 import { NavLink, Switch, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Dummy from "./Dummy";
+import LoginForm from "./LoginForm";
 
 //Input styled component
 const BoxStyle = Styled.input`
@@ -19,41 +20,13 @@ function HomePage(props) {
       {/* Header Div to contain login fields, login button, signup button*/}
       <div className="headerDiv">
         {/* Header */}
-        <header>
+        <header className="header-wrap">
           {/* H1 */}
           <div>
             <h1> Water My Plants</h1>{" "}
           </div>
 
-          {/* Login Button */}
-          <div className="login">
-            <NavLink exact to="/plantlist" className="ButtonStyle" id="login">
-              {" "}
-              Log In
-            </NavLink>
-          </div>
-
-          <div className="labelDiv">
-            {/* Username label/input */}
-            <label htmlFor="username">
-              <BoxStyle
-                type="text"
-                id="username"
-                placeholder="username"
-                value=""
-              />
-            </label>
-
-            {/* Password label/input */}
-            <label htmlFor="password">
-              <BoxStyle
-                type="text"
-                id="password"
-                placeholder="password"
-                value=""
-              />
-            </label>
-          </div>
+          <LoginForm />
 
           {/* Sign up button */}
           <div className="signup">

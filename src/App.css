@@ -91,5 +91,29 @@ body {
   position: absolute;
   color: red;
   font-size: 0.7rem;
-  transform: translateY(4rem);
+}
+
+.login-form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* background-color: red; */
+  /* margin-right: 1rem; */
+  /* margin-left: 1rem; */
+  width: 30rem;
+}
+
+.login-input {
+  width: 10rem;
+}
+
+.login-btn {
+  height: 2rem;
+  /* width: 3rem; */
+  font-size: 1rem;
+}
+
+.header-wrap {
+  display: flex;
+  align-items: center;
 }

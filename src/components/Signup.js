@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Formik, Form } from "formik";
 import TextField from "./TextField";
@@ -6,6 +6,8 @@ import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Signup(props) {
+  const { labelStyle } = props;
+  const [hasLabel, setHasLabel] = useState(true);
   const history = useHistory();
   const schema = yup.object({
     username: yup.string().required("Username is Required"),
@@ -34,19 +36,35 @@ function Signup(props) {
         <div className="signup-wrap">
           <h1>Sign Up</h1>
           <Form>
-            <TextField label="Username" name="username" type="text" />
-            <TextField label="Password" name="password" type="password" />
+            <TextField
+              label="Username"
+              name="username"
+              type="text"
+              className="signup-textfield"
+              hasLabel={hasLabel}
+            />
+            <TextField
+              label="Password"
+              name="password"
+              type="password"
+              className="signup-textfield"
+              hasLabel={hasLabel}
+            />
             <TextField
               label="Email"
               name="user_email"
               type="email"
               placeholder="optional"
+              className="signup-textfield"
+              hasLabel={hasLabel}
             />
             <TextField
               label="Phone Number"
               name="user_phone"
               type="tel"
               placeholder="012-345-6789"
+              className="signup-textfield"
+              hasLabel={hasLabel}
             />
             <button type="submit" className="btn-dark">
               Register
