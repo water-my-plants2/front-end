@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchPlants } from "../actions/index";
 import "../index.css";
+import PlantListHeader from "./PlantListHeader";
 
 const PlantList = (props) => {
   const plants = props.plants;
@@ -15,10 +16,11 @@ const PlantList = (props) => {
   }, []);
 
   return (
-    <div class="container">
+    <div>
+      <PlantListHeader />
       <div class="add-section">
         <Link to={pathname == "/plantlist" ? "plantlist/add" : "/plantlist"}>
-          <button>Add Plant</button>
+          <button className="btn-primary btn-addplant">Add Plant</button>
         </Link>
       </div>
       <div class="card-section">
