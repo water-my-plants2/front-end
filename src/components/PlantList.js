@@ -1,5 +1,6 @@
 import Card from './Card'
 import React, { useEffect }  from "react";
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchPlants } from '../actions/index';
 import '../index.css';
@@ -16,9 +17,9 @@ const PlantList = (props) => {
     return (
         <div class="container">
             <div class="add-section">
-                <button> 
+                <Link  to="plantlist/add"> 
                     Add Plant
-                </button>
+                </Link>
             </div>
             <div class="card-section">
                 {
