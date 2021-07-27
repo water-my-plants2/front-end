@@ -41,6 +41,10 @@ const AddPlant = (props) => {
                     <label>Frequency</label>
                     <input value={h2oFrequency} onChange={handleChange} name="h2oFrequency" type="text" />
                 </div>
+                <div >
+                    <label>Image URL</label>
+                    <input value={image} onChange={handleChange} name="image" type="text" />
+                </div>
                 <div>
                     <input type="submit" value="Add"/>
                     <Link to={`/plantlist`}>
