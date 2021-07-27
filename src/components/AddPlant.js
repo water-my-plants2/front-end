@@ -1,64 +1,168 @@
-import React, { useState } from 'react';
-import { addPlant } from '../actions';
-import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { addPlant } from "../actions";
+import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import "../App.css";
+import * as yup from "yup";
 
 const AddPlant = (props) => {
-    const { push } = useHistory();
-    const [plant, setPlant] = useState({
-        id: props.plants.length + 1,
-        nickname: "",
-        species: "",
-        h2oFrequency: 1,
-        image: ""
+  const plantSchema = yup.object().shape({
+    h2oFrequency: yup
+      .number()
+      .required("Required")
+      .min(1, "Must be at least 1"),
+    image: yup.string().notRequired(),
+    nickname: yup.string().required("Required"),
+    species: yup.string().required("Required"),
+  });
+
+  const setFormErrors = (name, value) => {
+    yup
+      .reach(plantSchema, name)
+      .validate(value)
+      .then((valid) => {
+        setErrors({ ...errors, [name]: "" });
+      })
+      .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
+  };
+
+  const { push } = useHistory();
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [errors, setErrors] = useState({
+    id: props.plants.length + 1,
+    nickname: "",
+    species: "",
+    h2oFrequency: "",
+    image: "",
+  });
+  const [plant, setPlant] = useState({
+    id: props.plants.length + 1,
+    nickname: "",
+    species: "",
+    h2oFrequency: 1,
+    image: "",
+  });
+
+  useEffect(() => {
+    const isValid = plantSchema.isValid(plant);
+    isValid.then((res) => {
+      setIsDisabled(!res);
     });
-    
-    const handleChange = (e) => {
-        setPlant({
-            ...plant,
-            [e.target.name]: e.target.value
-        });
-    }
+  }, [plant]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        props.addPlant(plant);
-        push('/plantlist');
-    }
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setPlant({
+      ...plant,
+      [e.target.name]: e.target.value,
+    });
+    setFormErrors(name, value);
+  };
 
-    const { nickname, species, h2oFrequency, image } = plant;
-    return( <div >
-               <form onSubmit={handleSubmit}>
-                <div>   
-                    <label>Nickname</label>
-                    <input value={nickname} onChange={handleChange} name="nickname" type="text" />
-                </div> 
-                <div>
-                    <label>Species</label>
-                    <input value={species} onChange={handleChange} name="species" type="text" />
-                </div>
-                <div >
-                    <label>Frequency</label>
-                    <input value={h2oFrequency} onChange={handleChange} name="h2oFrequency" type="text" />
-                </div>
-                <div >
-                    <label>Image URL</label>
-                    <input value={image} onChange={handleChange} name="image" type="text" />
-                </div>
-                <div>
-                    <input type="submit" value="Add"/>
-                    <Link to={`/plantlist`}>
-                    <input type="button" value="Cancel"/></Link>
-                </div>
-                </form>
-            </div>
-    )}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(plant);
+    props.addPlant(plant);
+    push("/plantlist");
+    setIsDisabled(true);
+  };
+
+  const { nickname, species, h2oFrequency, image } = plant;
+  return (
+    <div className="addplant-wrap">
+      <h1 className="addplant-title">Add a Plant</h1>
+      <form onSubmit={handleSubmit} className="addplant-form">
+        <div>
+          <label>Nickname</label>
+          <input
+            value={nickname}
+            onChange={handleChange}
+            name="nickname"
+            type="text"
+            autoComplete="off"
+          />
+          <p className="addplant-error">{errors.nickname}</p>
+        </div>
+        <div>
+          <label>Species</label>
+          <input
+            value={species}
+            onChange={handleChange}
+            name="species"
+            type="text"
+            autoComplete="off"
+          />
+          <p className="addplant-error">{errors.species}</p>
+        </div>
+        <div>
+          <label>Watering Frequency</label>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "0px",
+            }}
+          >
+            <h2 className="addplant-waterinputtitle">Every</h2>
+            <input
+              value={h2oFrequency}
+              onChange={handleChange}
+              name="h2oFrequency"
+              type="number"
+              autoComplete="off"
+              style={{
+                width: "3rem",
+              }}
+            />
+            <h2 className="addplant-waterinputtitle">Day(s)</h2>
+          </div>
+          <p className="addplant-error">{errors.h2oFrequency}</p>
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input
+            value={image}
+            onChange={handleChange}
+            name="image"
+            type="text"
+            autoComplete="off"
+            placeholder="optional"
+          />
+          <p className="addplant-error">{errors.image}</p>
+        </div>
+        <div>
+          <div
+            className="btnContainer"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: "40%",
+              margin: "auto",
+              marginTop: "1rem",
+            }}
+          >
+            {/* <Link to={"/plantlist"}> */}
+            <button disabled={isDisabled} type="submit" className="btn-dark">
+              Add
+            </button>
+            {/* </Link> */}
+            <Link to={`/plantlist`}>
+              <button className="btn-danger">Cancel</button>
+            </Link>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
-    return {
-      plants: state.plants
-    };
+  return {
+    plants: state.plants,
   };
-  
+};
+
 export default connect(mapStateToProps, { addPlant })(AddPlant);
-  
