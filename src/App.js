@@ -8,12 +8,16 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { plantReducer } from "./reducers/index";
+
 // import Dummy from "./components/Dummy";
-// import HomePage from "./components/HomePage";
 import Signup from "./components/Signup.js";
 import Login from "./components/Login.js";
 import PlantList from "./components/PlantList.js";
 import HomePage from "./components/HomePage";
+import { create } from "yup/lib/array";
 
 //Main function
 function App() {

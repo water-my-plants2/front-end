@@ -6,7 +6,25 @@ import { START_FETCH_PLANTS,
     SET_VALUE_TO_ERROR_MESSAGE } from '../actions/index.js';
 
 export const initialState = {
-    plants: [],
+    plants: [{
+        id: 1,
+        nickname: "Spider Plant initial",
+        species: "Chlorophytum Comosum",
+        h2oFrequency: 3,
+        image: ""
+    },{
+        id: 2,
+        nickname: "Aloe Vera initial",
+        species: "Aloe",
+        h2oFrequency: 1,
+        image: ""
+    },{
+        id: 3,
+        nickname: "Peace Lily initial",
+        species: "Spathiphyllum Wallisii",
+        h2oFrequency: 5,
+        image: ""
+    }],
     isLoading: false,
     dataError: "",
     errorMessage: "" 
