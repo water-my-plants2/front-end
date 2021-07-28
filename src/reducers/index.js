@@ -2,6 +2,7 @@ import { START_FETCH_PLANTS,
     SUCCESS_FETCH_PLANTS,
     FAIL_FETCH_PLANTS,
     ADD_PLANT, 
+    EDIT_PLANT,
     DELETE_PLANT,
     SET_VALUE_TO_ERROR_MESSAGE } from '../actions/index.js';
 import axiosWithAuth from '../utils/axiosWithAuth.js';
@@ -55,20 +56,31 @@ switch(action.type) {
         return {
             plants: state.plants.filter(item=>(action.payload !== item.id))
         }
-    case ADD_PLANT:
-        console.log("add plant action.payload: ", action.payload);
+        case ADD_PLANT:
+            console.log("add plant action.payload: ", action.payload);
+            axiosWithAuth()
+            .post("api/plants", action.payload) 
+            .then(resp => {console.log("add plant response: ", resp);
+                // dispatch(fetchSuccess(resp.data));
+            })
+            .catch(err=>{
+                // dispatch(fetchFail(err));
+            });
+            return {
+                ...state,
+                plants: [...state.plants, action.payload]
+            }    
+        case EDIT_PLANT:
+        console.log("edit plant action.payload: ", action.payload);
         axiosWithAuth()
-        .post("api/plants", action.payload) 
-        .then(resp => {console.log("add plant response: ", resp);
+        .put("/api/plants/:plant_id", action.payload) 
+        .then(resp => {console.log("edit plant response: ", resp);
             // dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
             // dispatch(fetchFail(err));
         });
-        return {
-            ...state,
-            plants: [...state.plants, action.payload]
-        }
+        return state //edit has already happened in state
     case SET_VALUE_TO_ERROR_MESSAGE:
         return({
             ...state,

@@ -2,6 +2,7 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import axios from 'axios';
 
 export const ADD_PLANT = "ADD_PLANT";
+export const EDIT_PLANT = "EDIT_PLANT";
 export const DELETE_PLANT = "DELETE_PLANT";
 export const START_FETCH_PLANTS = "START_FETCH_PLANTS";
 export const SUCCESS_FETCH_PLANTS = "SUCCESS_LOGIN";
@@ -45,8 +46,11 @@ export const fetchPlants = (id) => {
 };
 
 export const addPlant = (plant) => {
-
     return({type:ADD_PLANT, payload:plant});
+}
+
+export const editPlant = (plant, id) => {
+    return({type:ADD_PLANT, payload:plant, plant_id:id});
 }
 
 export const deletePlant = (id)=>{

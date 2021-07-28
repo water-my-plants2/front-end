@@ -29,14 +29,14 @@ const AddPlant = (props) => {
   const { push } = useHistory();
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState({
-    user_id: 1,
+    user_id: props.user_id,
     plant_nickname: "",
     plant_species: "",
     h2oFrequency: "",
     // image: "",
   });
   const [plant, setPlant] = useState({
-    user_id: 1,
+    user_id: props.user_id,
     plant_nickname: "",
     plant_species: "",
     h2oFrequency: 1,

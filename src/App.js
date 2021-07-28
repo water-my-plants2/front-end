@@ -26,6 +26,12 @@ function App() {
     id: 0,
   });
 
+  // take user directly to plantlist if token and id exist in local storage
+  if (localStorage.getItem("token") && localStorage.getItem("wmp-id")) {
+    // setSessionInfo({authenticated: true, id: localStorage.getItem("wmp-id")})
+    // window.location.href = "/plantlist"
+  };
+
   const login = (credentials) => {
     console.log("login credentials: ", credentials);
     axios.post('https://watermyplants02.herokuapp.com/api/auth/login', credentials)
@@ -34,7 +40,7 @@ function App() {
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("wmp-id", res.data.user_id);
  
-          setSessionInfo({authenticated: true, id: res.data.user_id})
+          setSessionInfo({authenticated: true, id: res.data.user_id});
           window.location.href = "/plantlist";
         } else {
           localStorage.removeItem("token");
@@ -71,6 +77,7 @@ function App() {
       .catch(err => {
         setSessionInfo({authenticated: false, id: null});
         localStorage.removeItem("token");
+        localStorage.removeItem("wmp-id");
         console.log("Login error: ", err);
       })
   };
@@ -81,10 +88,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {console.log("about to test sessionInfo.authenticated", sessionInfo.authenticated)}
         {!sessionInfo.authenticated ? <Link to="/">Login</Link> : <Link to="/" onClick={logout}>Logout</Link>}
         <Route exact path="/" render={(props)=> {
-            return <HomePage {...props} login={login}/>
+            if (localStorage.getItem('token')) {
+              return <PlantList {...props} id={localStorage.getItem("wmp-id")}/>
+            } else {
+                return <HomePage {...props} login={login}/>
+            }
           }} />
         <Route path="/signup" render={(props)=> {
             return <Signup {...props} register={register}/>
@@ -97,6 +107,13 @@ function App() {
           }
         }} />
         <Route path="/plantlist/add" render={(props)=> {
+          if (localStorage.getItem('token')) {
+            return <AddPlant {...props} id={localStorage.getItem("wmp-id")}/>
+          } else {
+              return <Redirect to="/"/>
+          }
+        }} />
+        <Route path="/plantlist/edit" render={(props)=> {
           if (localStorage.getItem('token')) {
             return <AddPlant {...props} id={localStorage.getItem("wmp-id")}/>
           } else {
