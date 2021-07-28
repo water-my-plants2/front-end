@@ -81,7 +81,7 @@ const AddPlant = (props) => {
             type="text"
             autoComplete="off"
           />
-          <p className="addplant-error">{errors.nickname}</p>
+          <p className="addplant-error">{errors.plant_nickname}</p>
         </div>
         <div>
           <label>Species</label>
@@ -92,7 +92,7 @@ const AddPlant = (props) => {
             type="text"
             autoComplete="off"
           />
-          <p className="addplant-error">{errors.species}</p>
+          <p className="addplant-error">{errors.plant_species}</p>
         </div>
         <div>
           <label>Watering Frequency</label>
