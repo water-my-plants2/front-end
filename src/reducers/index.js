@@ -13,19 +13,19 @@ export const initialState = {
         plant_nickname: "Spider Plant initial",
         plant_species: "Chlorophytum Comosum",
         h2ofrequency: 3,
-        image: ""
+        plant_image: ""
     },{
         plant_id: 2,
         plant_nickname: "Aloe Vera initial",
         plant_species: "Aloe",
         h2ofrequency: 1,
-        image: ""
+        plant_image: ""
     },{
         plant_id: 3,
         plant_nickname: "Peace Lily initial",
         plant_species: "Spathiphyllum Wallisii",
         h2ofrequency: 5,
-        image: ""
+        plant_image: ""
     }],
     isLoading: false,
     dataError: "",

@@ -11,7 +11,7 @@ const AddPlant = (props) => {
       .number()
       .required("Required")
       .min(1, "Must be at least 1"),
-    image: yup.string().notRequired(),
+    plant_image: yup.string().notRequired(),
     plant_nickname: yup.string().required("Required"),
     plant_species: yup.string().required("Required"),
   });
@@ -33,14 +33,14 @@ const AddPlant = (props) => {
     plant_nickname: "",
     plant_species: "",
     h2ofrequency: 0,
-    image: "",
+    plant_image: "",
   });
   const [plant, setPlant] = useState({
     plant_nickname: "",
     plant_species: "",
     h2ofrequency: 0,
     user_id: localStorage.getItem("wmp-id"),
-    image: "",
+    plant_image: "",
   });
 
   useEffect(() => {
@@ -59,15 +59,20 @@ const AddPlant = (props) => {
     setFormErrors(name, value);
   };
 
+  const stringToInteger = plant => {
+    setPlant({...plant, user_id: parseInt(plant.user_id, 10), h2ofrequency: parseInt(plant.h2ofrequency, 10)});
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    stringToInteger(plant);
     console.log("handleSubmit: ", plant);
     props.addPlant(plant);
     push("/plantlist");
     setIsDisabled(true);
   };
 
-  const { plant_nickname, plant_species, h2ofrequency, image } = plant;
+  const { plant_nickname, plant_species, h2ofrequency, plant_image } = plant;
   return (
     <div className="addplant-wrap">
       <h1 className="addplant-title">Add a Plant</h1>
@@ -123,14 +128,14 @@ const AddPlant = (props) => {
         <div>
           <label>Image URL</label>
           <input
-            value={image}
+            value={plant_image}
             onChange={handleChange}
-            name="image"
+            name="plant_image"
             type="text"
             autoComplete="off"
             placeholder="optional"
           />
-          <p className="addplant-error">{errors.image}</p>
+          <p className="addplant-error">{errors.plant_image}</p>
         </div>
         <div>
           <div
