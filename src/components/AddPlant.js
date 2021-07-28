@@ -7,7 +7,7 @@ import * as yup from "yup";
 
 const AddPlant = (props) => {
   const plantSchema = yup.object().shape({
-    h2oFrequency: yup
+    h2ofrequency: yup
       .number()
       .required("Required")
       .min(1, "Must be at least 1"),
@@ -32,14 +32,14 @@ const AddPlant = (props) => {
     user_id: 1,
     plant_nickname: "",
     plant_species: "",
-    h2oFrequency: "",
+    h2ofrequency: "",
     // image: "",
   });
   const [plant, setPlant] = useState({
     user_id: 1,
     plant_nickname: "",
     plant_species: "",
-    h2oFrequency: 1,
+    h2ofrequency: 1,
     // image: "",
   });
 
@@ -67,7 +67,7 @@ const AddPlant = (props) => {
     setIsDisabled(true);
   };
 
-  const { plant_nickname, plant_species, h2oFrequency } = plant;
+  const { plant_nickname, plant_species, h2ofrequency } = plant;
   return (
     <div className="addplant-wrap">
       <h1 className="addplant-title">Add a Plant</h1>
@@ -107,9 +107,9 @@ const AddPlant = (props) => {
           >
             <h2 className="addplant-waterinputtitle">Every</h2>
             <input
-              value={h2oFrequency}
+              value={h2ofrequency}
               onChange={handleChange}
-              name="h2oFrequency"
+              name="h2ofrequency"
               type="number"
               autoComplete="off"
               style={{
@@ -118,7 +118,7 @@ const AddPlant = (props) => {
             />
             <h2 className="addplant-waterinputtitle">Day(s)</h2>
           </div>
-          <p className="addplant-error">{errors.h2oFrequency}</p>
+          <p className="addplant-error">{errors.h2ofrequency}</p>
         </div>
         {/* <div>
           <label>Image URL</label>
