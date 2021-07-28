@@ -178,3 +178,11 @@ body {
 .plant-card {
   background-color: blue;
 }
+
+.dynamic-progress-bar {
+  background-color: lightblue;
+  width: 100%;
+  float: right;
+  position: absolute;
+  left: 0;
+}
