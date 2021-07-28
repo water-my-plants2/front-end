@@ -50,7 +50,7 @@ export const addPlant = (plant) => {
 }
 
 export const editPlant = (plant, id) => {
-    return({type:ADD_PLANT, payload:plant, plant_id:id});
+    return({type:EDIT_PLANT, payload:plant, plant_id:id});
 }
 
 export const deletePlant = (id)=>{

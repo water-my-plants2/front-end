@@ -13,6 +13,7 @@ import Signup from "./components/Signup.js";
 import PlantList from "./components/PlantList.js";
 import HomePage from "./components/HomePage";
 import AddPlant from "./components/AddPlant";
+import EditPlant from "./components/EditPlant";
 import PrivateRoute from './components/PrivateRoute';
 import axios from 'axios';
 
@@ -63,7 +64,7 @@ function App() {
 
   const register = (values) => {
     console.log("register values: ", values);
-    axios('https://watermyplants02.herokuapp.com/api/auth/register', values)
+    axios.post('https://watermyplants02.herokuapp.com/api/auth/register', values)
       .then(res => {console.log("register response: ", res); 
         // if (res.statusText === "OK") {
         //   localStorage.setItem("token", res.data.token);
@@ -90,7 +91,7 @@ function App() {
       <Router>
         {!sessionInfo.authenticated ? <Link to="/">Login</Link> : <Link to="/" onClick={logout}>Logout</Link>}
         <Route exact path="/" render={(props)=> {
-            if (localStorage.getItem('token')) {
+            if (localStorage.getItem('token') && localStorage.getItem("wmp-id")) {
               return <PlantList {...props} id={localStorage.getItem("wmp-id")}/>
             } else {
                 return <HomePage {...props} login={login}/>
@@ -115,7 +116,7 @@ function App() {
         }} />
         <Route path="/plantlist/edit" render={(props)=> {
           if (localStorage.getItem('token')) {
-            return <AddPlant {...props} id={localStorage.getItem("wmp-id")}/>
+            return <EditPlant {...props} id={localStorage.getItem("wmp-id")}/>
           } else {
               return <Redirect to="/"/>
           }

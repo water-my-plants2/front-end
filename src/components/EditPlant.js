@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { addPlant } from "../actions";
+import { editPlant } from "../actions";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import "../App.css";
 import * as yup from "yup";
 
-const AddPlant = (props) => {
+const EditPlant = (props) => {
   const plantSchema = yup.object().shape({
     h2oFrequency: yup
       .number()
@@ -36,10 +36,10 @@ const AddPlant = (props) => {
     // image: "",
   });
   const [plant, setPlant] = useState({
-    plant_nickname: "",
-    plant_species: "",
-    h2ofrequency: 1,
-    user_id: localStorage.getItem("wmp-id"),
+    user_id: props.user_id,
+    plant_nickname: props.plant.plant_nickname,
+    plant_species: props.plant.plant_species,
+    h2ofrequency: props.plant.h2oFrequency
     // image: "",
   });
 
@@ -62,7 +62,7 @@ const AddPlant = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(plant);
-    props.addPlant(plant);
+    props.editPlant(plant);
     push("/plantlist");
     setIsDisabled(true);
   };
@@ -109,7 +109,7 @@ const AddPlant = (props) => {
             <input
               value={h2oFrequency}
               onChange={handleChange}
-              name="h2oFrequency"
+              name="h2ofrequency"
               type="number"
               autoComplete="off"
               style={{
@@ -165,4 +165,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addPlant })(AddPlant);
+export default connect(mapStateToProps, { editPlant })(EditPlant);

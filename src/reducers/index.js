@@ -56,31 +56,35 @@ switch(action.type) {
         return {
             plants: state.plants.filter(item=>(action.payload !== item.id))
         }
-        case ADD_PLANT:
-            console.log("add plant action.payload: ", action.payload);
-            axiosWithAuth()
-            .post("api/plants", action.payload) 
-            .then(resp => {console.log("add plant response: ", resp);
-                // dispatch(fetchSuccess(resp.data));
-            })
-            .catch(err=>{
-                // dispatch(fetchFail(err));
-            });
-            return {
-                ...state,
-                plants: [...state.plants, action.payload]
-            }    
-        case EDIT_PLANT:
+    case ADD_PLANT:
+        console.log("add plant action.payload: ", action.payload);
+        axiosWithAuth()
+        .post("api/plants", action.payload) 
+        .then(resp => {console.log("add plant response: ", resp);
+            // dispatch(fetchSuccess(resp.data));
+        })
+        .catch(err=>{
+            // dispatch(fetchFail(err));
+        });
+        return {
+            ...state,
+            plants: [...state.plants, action.payload]
+        }    
+    case EDIT_PLANT:
         console.log("edit plant action.payload: ", action.payload);
         axiosWithAuth()
-        .put("/api/plants/:plant_id", action.payload) 
+        .put(`/api/plants/${action.plant_id}`, action.payload) 
         .then(resp => {console.log("edit plant response: ", resp);
             // dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
             // dispatch(fetchFail(err));
         });
-        return state //edit has already happened in state
+        return {
+            ...state,
+            plants: [...state.plants, action.payload] //this will add a new plant record; not what we want
+            //probably need to delete old record (where plant_id = plant_id coming from response,) then add new
+        }        
     case SET_VALUE_TO_ERROR_MESSAGE:
         return({
             ...state,
