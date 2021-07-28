@@ -3,14 +3,14 @@ import React from "react";
 
 const Card = (props) => {
 
-    const { nickname, species, h2oFrequency, image } = props.plant;
+    const { plant_nickname, plant_species, h2oFrequency } = props.plant;
 
    return (
     <div class="plant-card">
         <div class ="box">
-            <img src={image} alt="plant"></img>
+            {/* <img src={image} alt="plant"></img> */}
         </div>
-        <p>{nickname} -- {species}</p>
+        <p>{plant_nickname} -- {plant_species}</p>
         <div class="progress"> 
             <div>
                 {h2oFrequency} days

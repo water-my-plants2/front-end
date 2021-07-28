@@ -6,24 +6,27 @@ import { fetchPlants } from "../actions/index";
 import "../index.css";
 
 const PlantList = (props) => {
-  const plants = props.plants;
+  const user_id = localStorage.getItem("wmp-id");
+  console.log("PlantList user_id: ", user_id);
+  const { plants } = props;
+  console.log("PlantList props: ", props);
   const history = useHistory();
   const pathname = history.location.pathname;
 
   useEffect(() => {
-    props.dispatch(fetchPlants());
+    props.dispatch(fetchPlants(user_id));
   }, []);
 
   return (
     <div class="container">
       <div class="add-section">
-        <Link to={pathname == "/plantlist" ? "plantlist/add" : "/plantlist"}>
+        <Link to={pathname === "/plantlist" ? "plantlist/add" : "/plantlist"}>
           <button>Add Plant</button>
         </Link>
       </div>
       <div class="card-section">
         {plants.map((plant) => (
-          <Card key={plant.id} plant={plant} />
+          <Card key={plant.plant_id} plant={plant} id={user_id} />
         ))}
       </div>
     </div>
