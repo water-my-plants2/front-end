@@ -2,7 +2,7 @@ import "../index.css";
 import React from "react";
 
 const Card = (props) => {
-  const { nickname, species, h2oFrequency, image } = props.plant;
+  const { plant_nickname, plant_species, h2oFrequency, image } = props.plant;
 
   return (
     <div class="plant-card">
@@ -10,7 +10,9 @@ const Card = (props) => {
         <div class="box">
           <img className="plantimg" src={image}></img>
         </div>
-        <p>{nickname}</p>
+        <p>{plant_nickname}</p>
+        <p>{plant_species}</p>
+
         <div class="progress">
           <div>{h2oFrequency} days</div>
         </div>

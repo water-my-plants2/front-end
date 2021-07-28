@@ -11,9 +11,9 @@ const AddPlant = (props) => {
       .number()
       .required("Required")
       .min(1, "Must be at least 1"),
-    image: yup.string().notRequired(),
-    nickname: yup.string().required("Required"),
-    species: yup.string().required("Required"),
+    // image: yup.string().notRequired(),
+    plant_nickname: yup.string().required("Required"),
+    plant_species: yup.string().required("Required"),
   });
 
   const setFormErrors = (name, value) => {
@@ -29,18 +29,18 @@ const AddPlant = (props) => {
   const { push } = useHistory();
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState({
-    id: props.plants.length + 1,
-    nickname: "",
-    species: "",
+    user_id: 1,
+    plant_nickname: "",
+    plant_species: "",
     h2oFrequency: "",
-    image: "",
+    // image: "",
   });
   const [plant, setPlant] = useState({
-    id: props.plants.length + 1,
-    nickname: "",
-    species: "",
+    user_id: 1,
+    plant_nickname: "",
+    plant_species: "",
     h2oFrequency: 1,
-    image: "",
+    // image: "",
   });
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const AddPlant = (props) => {
     setIsDisabled(true);
   };
 
-  const { nickname, species, h2oFrequency, image } = plant;
+  const { plant_nickname, plant_species, h2oFrequency } = plant;
   return (
     <div className="addplant-wrap">
       <h1 className="addplant-title">Add a Plant</h1>
@@ -75,9 +75,9 @@ const AddPlant = (props) => {
         <div>
           <label>Nickname</label>
           <input
-            value={nickname}
+            value={plant_nickname}
             onChange={handleChange}
-            name="nickname"
+            name="plant_nickname"
             type="text"
             autoComplete="off"
           />
@@ -86,9 +86,9 @@ const AddPlant = (props) => {
         <div>
           <label>Species</label>
           <input
-            value={species}
+            value={plant_species}
             onChange={handleChange}
-            name="species"
+            name="plant_species"
             type="text"
             autoComplete="off"
           />
@@ -120,7 +120,7 @@ const AddPlant = (props) => {
           </div>
           <p className="addplant-error">{errors.h2oFrequency}</p>
         </div>
-        <div>
+        {/* <div>
           <label>Image URL</label>
           <input
             value={image}
@@ -131,7 +131,7 @@ const AddPlant = (props) => {
             placeholder="optional"
           />
           <p className="addplant-error">{errors.image}</p>
-        </div>
+        </div> */}
         <div>
           <div
             className="btnContainer"
@@ -162,6 +162,7 @@ const AddPlant = (props) => {
 const mapStateToProps = (state) => {
   return {
     plants: state.plants,
+    user_id: state.user_id,
   };
 };
 

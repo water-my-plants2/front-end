@@ -6,7 +6,7 @@ import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Signup(props) {
-  const [hasLabel, setHasLabel] = useState(true);
+  // const [hasLabel, setHasLabel] = useState(true);
   const history = useHistory();
   const schema = yup.object({
     username: yup.string().required("Username is Required"),
@@ -17,17 +17,21 @@ function Signup(props) {
       .max(12, "Character Limit Exceeded"),
     user_email: yup.string().email("Must be a valid email"),
   });
+  // if user is loading signup form, remove any existing auth token
+  localStorage.removeItem("token");
   return (
     <Formik
       initialValues={{
         username: "",
         password: "",
-        user_email: "",
         user_phone: "",
+        user_email: "",
       }}
-      validationSchema={schema}
+      // validationSchema={schema}
+
       onSubmit={(values) => {
-        console.log(values);
+        console.log("onSubmit", values);
+        props.register(values);
         history.push("plantlist");
       }}
     >
@@ -40,14 +44,20 @@ function Signup(props) {
               name="username"
               type="text"
               className="signup-textfield"
-              // hasLabel={hasLabel}
             />
             <TextField
               label="Password"
               name="password"
               type="password"
               className="signup-textfield"
-              // hasLabel={hasLabel}
+            />
+            
+            <TextField
+              label="Phone Number"
+              name="user_phone"
+              type="tel"
+              placeholder="012-345-6789"
+              className="signup-textfield"
             />
             <TextField
               label="Email"
@@ -55,15 +65,6 @@ function Signup(props) {
               type="email"
               placeholder="optional"
               className="signup-textfield"
-              // hasLabel={hasLabel}
-            />
-            <TextField
-              label="Phone Number"
-              name="user_phone"
-              type="tel"
-              placeholder="012-345-6789"
-              className="signup-textfield"
-              // hasLabel={hasLabel}
             />
             <button type="submit" className="btn-dark">
               Register
