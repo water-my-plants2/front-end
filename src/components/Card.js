@@ -1,8 +1,12 @@
 import "../index.css";
 import React from "react";
 
+const handleEditPlant = (plant) => {
+  console.log("handleEditPlant plant: ", plant);
+}
+
 const Card = (props) => {
-  const { plant_nickname, plant_species, h2oFrequency, image } = props.plant;
+  const { plant_nickname, plant_species, h2ofrequency, image } = props.plant;
 
   return (
     <div class="plant-card">
@@ -14,9 +18,9 @@ const Card = (props) => {
         <p>{plant_species}</p>
 
         <div class="progress">
-          <div>{h2oFrequency} days</div>
+          <div>{h2ofrequency} days</div>
         </div>
-        <button class="edit"> Edit </button>
+        <button class="edit" onClick={()=>{handleEditPlant(props.plant)}}> Edit </button>
       </div>
     </div>
   );

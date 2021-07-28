@@ -8,9 +8,7 @@ import PlantListHeader from "./PlantListHeader";
 
 const PlantList = (props) => {
   const user_id = localStorage.getItem("wmp-id");
-  console.log("PlantList user_id: ", user_id);
   const { plants } = props;
-  console.log("PlantList props: ", props);
   const history = useHistory();
   const pathname = history.location.pathname;
 

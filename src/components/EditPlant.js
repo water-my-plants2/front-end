@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { addPlant } from "../actions";
+import { editPlant } from "../actions";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import "../App.css";
 import * as yup from "yup";
 
-const AddPlant = (props) => {
+const EditPlant = (props) => {
   const plantSchema = yup.object().shape({
     h2ofrequency: yup
       .number()
@@ -36,10 +36,10 @@ const AddPlant = (props) => {
     // image: "",
   });
   const [plant, setPlant] = useState({
-    plant_nickname: "",
-    plant_species: "",
-    h2ofrequency: 0,
-    user_id: localStorage.getItem("wmp-id"),
+    user_id: props.user_id,
+    plant_nickname: props.plant.plant_nickname,
+    plant_species: props.plant.plant_species,
+    h2ofrequency: props.plant.h2ofrequency
     // image: "",
   });
 
@@ -61,8 +61,8 @@ const AddPlant = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit: ", plant);
-    props.addPlant(plant);
+    console.log(plant);
+    props.editPlant(plant);
     push("/plantlist");
     setIsDisabled(true);
   };
@@ -81,7 +81,7 @@ const AddPlant = (props) => {
             type="text"
             autoComplete="off"
           />
-          <p className="addplant-error">{errors.plant_nickname}</p>
+          <p className="addplant-error">{errors.nickname}</p>
         </div>
         <div>
           <label>Species</label>
@@ -92,7 +92,7 @@ const AddPlant = (props) => {
             type="text"
             autoComplete="off"
           />
-          <p className="addplant-error">{errors.plant_species}</p>
+          <p className="addplant-error">{errors.species}</p>
         </div>
         <div>
           <label>Watering Frequency</label>
@@ -165,4 +165,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addPlant })(AddPlant);
+export default connect(mapStateToProps, { editPlant })(EditPlant);
