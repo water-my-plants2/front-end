@@ -9,7 +9,7 @@ const handleEditPlant = (plant) => {
 
 const Card = (props) => {
 
-  const { plant_nickname, plant_species, h2ofrequency, plant_plant_image } =
+  const { plant_nickname, plant_species, h2ofrequency, plant_image } =
     props.plant;
 
 
@@ -18,7 +18,7 @@ const Card = (props) => {
     <div class="plant-card">
       <div className="plant-inner-wrap">
         <div class="box">
-          <img className="plantimg" src={plant_plant_image}></img>
+          <img className="plantimg" src={plant_image}></img>
         </div>
         <p>{plant_nickname}</p>
         <p>{plant_species}</p>
