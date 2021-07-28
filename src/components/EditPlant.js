@@ -11,7 +11,7 @@ const EditPlant = (props) => {
       .number()
       .required("Required")
       .min(1, "Must be at least 1"),
-    // image: yup.string().notRequired(),
+    // plant_image: yup.string().notRequired(),
     plant_nickname: yup.string().required("Required"),
     plant_species: yup.string().required("Required"),
   });
@@ -33,14 +33,14 @@ const EditPlant = (props) => {
     plant_nickname: "",
     plant_species: "",
     h2ofrequency: 0,
-    // image: "",
+    // plant_image: "",
   });
   const [plant, setPlant] = useState({
     user_id: props.user_id,
     plant_nickname: props.plant.plant_nickname,
     plant_species: props.plant.plant_species,
     h2ofrequency: props.plant.h2ofrequency
-    // image: "",
+    // plant_image: "",
   });
 
   useEffect(() => {
@@ -123,14 +123,14 @@ const EditPlant = (props) => {
         {/* <div>
           <label>Image URL</label>
           <input
-            value={image}
+            value={plant_image}
             onChange={handleChange}
-            name="image"
+            name="plant_image"
             type="text"
             autoComplete="off"
             placeholder="optional"
           />
-          <p className="addplant-error">{errors.image}</p>
+          <p className="addplant-error">{errors.plant_image}</p>
         </div> */}
         <div>
           <div

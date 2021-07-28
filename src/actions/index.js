@@ -14,19 +14,19 @@ export const SET_VALUE_TO_ERROR_MESSAGE = "SET_VALUE_TO_ERROR_MESSAGE";
 //     nickname: "Spider Plant redux",
 //     species: "Chlorophytum Comosum",
 //     h2ofrequency: 3,
-//     image: "https://www.houseplantsexpert.com/image-files/spiderplant.jpg"
+//     plant_image: "https://www.houseplantsexpert.com/plant_image-files/spiderplant.jpg"
 // },{
 //     id: 2,
 //     nickname: "Aloe Vera redux",
 //     species: "Aloe",
 //     h2ofrequency: 1,
-//     image: "https://www.houseplantsexpert.com/image-files/aloevera.jpg"
+//     plant_image: "https://www.houseplantsexpert.com/plant_image-files/aloevera.jpg"
 // },{
 //     id: 3,
 //     nickname: "Peace Lily redux",
 //     species: "Spathiphyllum Wallisii",
 //     h2ofrequency: 5,
-//     image: "https://www.houseplantsexpert.com/image-files/peace-lily.jpg"
+//     plant_image: "https://www.houseplantsexpert.com/plant_image-files/peace-lily.jpg"
 // }]
 
 export const fetchPlants = (id) => {
