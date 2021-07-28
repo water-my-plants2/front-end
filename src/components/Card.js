@@ -1,24 +1,46 @@
 import '../index.css'
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {Link, useHistory} from "react-router-dom";
 
-const Card = (props) => {
 
-    const { nickname, species, h2oFrequency, image } = props.plant;
+//Card function
+const Card = (props) => 
+{
+    //Assign history
+    const history = useHistory();
+    
+    //Define props
+    const { id, nickname, species, h2oFrequency, image } = props.plant;
 
+    //HandleClick
+    const handleClick = (event) =>
+    {
+        //Dynamically assign id to url
+        history.push(`/plantlist/edit/${id}`);
+
+    }
+
+    console.log("NICK >> ", nickname)
+    //Return function
    return (
-    <div class="plant-card">
-        <div class ="box">
+    <div className="plant-card">
+        <div className ="box">
             <img src={image}></img>
         </div>
         <p>{nickname} -- {species}</p>
-        <div class="progress"> 
+        <div className ="progress"> 
             <div>
                 {h2oFrequency} days
             </div>
+            <div >  {id}    </div>
         </div>
-    <button class="edit"> Edit </button>
-</div>
+
+        {/* Edit button with click to open Edit Card*/}
+        <button onClick = {handleClick} className="edit" id = {id} nickname = {nickname}> Edit </button>
+    
+    </div>
    )
 }
 
+//Export statement
 export default Card;

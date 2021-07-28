@@ -135,3 +135,92 @@ body
   display: flex;
   align-items: center;
 }
+
+.addplant-wrap {
+  background-color: white;
+  width: 40rem;
+  height: 30rem;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.editplant-wrap {
+  background-color: white;
+  width: 40rem;
+  height: 30rem;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.addplant-wrap div {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.editplant-wrap div 
+{
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.addplant-title {
+  margin-bottom: 1rem;
+  padding: 0px;
+}
+
+.editplant-title 
+{
+  margin-bottom: 1rem;
+  padding: 0px;
+}
+
+.addplant-waterinputtitle {
+  font-size: 1rem;
+  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.addplant-form {
+  /* background-color: red; */
+  width: 20rem;
+}
+
+.editplant-form 
+{
+  /* background-color: red; */
+  width: 20rem;
+}
+
+.addplant-error {
+  color: red;
+  position: absolute;
+  font-size: 0.7rem;
+  transform: translateY(3.5rem);
+}

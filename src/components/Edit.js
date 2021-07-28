@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { addPlant } from "../actions";
+import { fetchPlants } from "../actions/index";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { useParams } from "react-router";
 import "../App.css";
 import * as yup from "yup";
 
-const AddPlant = (props) => {
+
+const Edit = (props) => {
+  
+  const{ id }= useParams();
+  console.log("useparam >>>>>", id);
+
+  
   const plantSchema = yup.object().shape({
     h2oFrequency: yup
       .number()
@@ -67,21 +74,26 @@ const AddPlant = (props) => {
     setIsDisabled(true);
   };
 
-  const { nickname, species, h2oFrequency, image } = plant;
+  fetchPlants(plant);
+ 
+  const {nickname, species, h2oFrequency, image } = plant;
+
+  console.log("NICK >>>", nickname )
   return (
-    <div className="addplant-wrap">
-      <h1 className="addplant-title">Add a Plant</h1>
-      <form onSubmit={handleSubmit} className="addplant-form">
+    <div className="editplant-wrap">
+      <h1 className="editplant-title">Edit Plant</h1>
+      <form onSubmit={handleSubmit} className="editplant-form">
         <div>
           <label>Nickname</label>
           <input
+            id = {id}
             value={nickname}
             onChange={handleChange}
             name="nickname"
             type="text"
             autoComplete="off"
           />
-          <p className="addplant-error">{errors.nickname}</p>
+          <p className="editplant-error">{errors.nickname}</p>
         </div>
         <div>
           <label>Species</label>
@@ -92,7 +104,7 @@ const AddPlant = (props) => {
             type="text"
             autoComplete="off"
           />
-          <p className="addplant-error">{errors.species}</p>
+          <p className="editplant-error">{errors.species}</p>
         </div>
         <div>
           <label>Watering Frequency</label>
@@ -105,7 +117,7 @@ const AddPlant = (props) => {
               margin: "0px",
             }}
           >
-            <h2 className="addplant-waterinputtitle">Every</h2>
+            <h2 className="editplant-waterinputtitle">Every</h2>
             <input
               value={h2oFrequency}
               onChange={handleChange}
@@ -116,9 +128,9 @@ const AddPlant = (props) => {
                 width: "3rem",
               }}
             />
-            <h2 className="addplant-waterinputtitle">Day(s)</h2>
+            <h2 className="editplant-waterinputtitle">Day(s)</h2>
           </div>
-          <p className="addplant-error">{errors.h2oFrequency}</p>
+          <p className="editplant-error">{errors.h2oFrequency}</p>
         </div>
         <div>
           <label>Image URL</label>
@@ -130,7 +142,7 @@ const AddPlant = (props) => {
             autoComplete="off"
             placeholder="optional"
           />
-          <p className="addplant-error">{errors.image}</p>
+          <p className="editplant-error">{errors.image}</p>
         </div>
         <div>
           <div
@@ -145,9 +157,10 @@ const AddPlant = (props) => {
             }}
           >
             {/* <Link to={"/plantlist"}> */}
-            <button disabled={isDisabled} type="submit" className="btn-dark">
-              Add
+            <button className="btn-dark">
+              Delete
             </button>
+
             {/* </Link> */}
             <Link to={`/plantlist`}>
               <button className="btn-danger">Cancel</button>
@@ -165,4 +178,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addPlant })(AddPlant);
+export default connect(mapStateToProps, { Edit})(Edit);

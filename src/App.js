@@ -8,6 +8,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { plantReducer } from "./reducers/index";
@@ -18,6 +19,7 @@ import LoginForm from "./components/LoginForm.js";
 import PlantList from "./components/PlantList.js";
 import HomePage from "./components/HomePage";
 import AddPlant from "./components/AddPlant";
+import Edit from "./components/Edit";
 import { create } from "yup/lib/array";
 
 //Main function
@@ -32,6 +34,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/plantlist" component={PlantList} />
         <Route path="/plantlist/add" component={AddPlant} />
+        <Route path="/plantlist/edit/:id :nickname" component={Edit} />
       </Router>
     </div>
   );

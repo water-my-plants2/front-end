@@ -6,7 +6,6 @@ import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Signup(props) {
-  const { labelStyle } = props;
   const [hasLabel, setHasLabel] = useState(true);
   const history = useHistory();
   const schema = yup.object({
