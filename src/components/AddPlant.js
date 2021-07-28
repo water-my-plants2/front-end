@@ -32,14 +32,22 @@ const AddPlant = (props) => {
     user_id: props.user_id,
     plant_nickname: "",
     plant_species: "",
-    h2ofrequency: 0,
+
+    h2ofrequency: "",
+
+   
+
     // image: "",
   });
   const [plant, setPlant] = useState({
     plant_nickname: "",
     plant_species: "",
+
+    
+
     h2ofrequency: 0,
     user_id: localStorage.getItem("wmp-id"),
+
     // image: "",
   });
 
