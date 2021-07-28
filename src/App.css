@@ -51,7 +51,7 @@ h1 {
 body {
   display: flex;
   flex-direction: column;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   color: #3a5f0b;
   -webkit-background-size: cover;
@@ -60,7 +60,7 @@ body {
   background-size: cover;
 
   background: url(back5.jpg);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .ButtonStyle {
@@ -162,4 +162,19 @@ body {
   position: absolute;
   font-size: 0.7rem;
   transform: translateY(3.5rem);
+}
+
+.plantlist-header {
+  width: 100%;
+}
+
+.card-section {
+  margin: auto;
+  /* width: 80%; */
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+}
+
+.plant-card {
+  background-color: blue;
 }
