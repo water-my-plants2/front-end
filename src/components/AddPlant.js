@@ -11,7 +11,7 @@ const AddPlant = (props) => {
       .number()
       .required("Required")
       .min(1, "Must be at least 1"),
-    // image: yup.string().notRequired(),
+    image: yup.string().notRequired(),
     plant_nickname: yup.string().required("Required"),
     plant_species: yup.string().required("Required"),
   });
@@ -33,14 +33,14 @@ const AddPlant = (props) => {
     plant_nickname: "",
     plant_species: "",
     h2ofrequency: 0,
-    // image: "",
+    image: "",
   });
   const [plant, setPlant] = useState({
     plant_nickname: "",
     plant_species: "",
     h2ofrequency: 0,
     user_id: localStorage.getItem("wmp-id"),
-    // image: "",
+    image: "",
   });
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const AddPlant = (props) => {
     setIsDisabled(true);
   };
 
-  const { plant_nickname, plant_species, h2ofrequency } = plant;
+  const { plant_nickname, plant_species, h2ofrequency, image } = plant;
   return (
     <div className="addplant-wrap">
       <h1 className="addplant-title">Add a Plant</h1>
@@ -120,7 +120,7 @@ const AddPlant = (props) => {
           </div>
           <p className="addplant-error">{errors.h2ofrequency}</p>
         </div>
-        {/* <div>
+        <div>
           <label>Image URL</label>
           <input
             value={image}
@@ -131,7 +131,7 @@ const AddPlant = (props) => {
             placeholder="optional"
           />
           <p className="addplant-error">{errors.image}</p>
-        </div> */}
+        </div>
         <div>
           <div
             className="btnContainer"
