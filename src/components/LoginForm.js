@@ -48,7 +48,7 @@ function LoginForm(props) {
     >
       {(formik) => (
         <Form className="login-form">
-          <button type="submit" className="btn btn-dark">
+          <button type="submit" className="btn btn-primary">
             Log In
           </button>
           <LoginTextField

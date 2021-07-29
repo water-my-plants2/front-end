@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, Switch, Route } from "react-router-dom";
 import Dummy from "./Dummy";
 import LoginForm from "./LoginForm";
+import Footer from "./Footer";
+import svg from "../flower.svg";
 
 function HomePage(props) {
   return (
@@ -19,14 +21,28 @@ function HomePage(props) {
             </NavLink>
           </div>
         </header>
-        <Switch>
-          <Route pathname="/Signup" component={Dummy} />
-          <Route pathname="/Login" component={Dummy} />
-        </Switch>
+        <div className="header-blend"></div>
       </div>
-      <body>
-        <div> message goes here </div>
-      </body>
+      <div className="homepage-content">
+        <div className="homepage-imgwrap">
+          <img src={svg} className="homepage-img" />
+        </div>
+        <div className="hero-text-wrap">
+          <div className="hero-text-row1 row">
+            <h3 className="hero-text">What</h3>
+          </div>
+          <div className="hero-text-row2 row">
+            <h3 className="hero-text">You</h3>
+          </div>
+          <div className="hero-text-row3 row">
+            <h3 className="hero-text">Water</h3>
+          </div>
+          <div className="hero-text-row4 row">
+            <h3 className="hero-text">Grows...</h3>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }

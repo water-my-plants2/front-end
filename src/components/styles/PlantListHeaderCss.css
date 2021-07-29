@@ -14,6 +14,13 @@
   font-size: 2.5rem;
 }
 
+.pl-header-right {
+  display: flex;
+}
+
+.pl-header-signout {
+  margin-left: 2rem;
+}
 .add-section {
   /* background-color: red; */
   display: flex;
