@@ -47,7 +47,7 @@ class Timer extends Component {
       this.setState((prevState) => ({
         hours: prevState.hours - 1,
       }));
-    }, 2000);
+    }, 3600000);
   };
 
   render() {
@@ -66,7 +66,7 @@ class Timer extends Component {
 
       setTimeout(() => {
         readyPlantArr = [];
-      }, 3600000);
+      }, 1000);
     }
     return (
       <div style={{ width: "100%" }}>
