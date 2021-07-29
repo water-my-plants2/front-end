@@ -17,10 +17,6 @@ import EditPlant from "./components/EditPlant";
 
 import PrivateRoute from "./components/PrivateRoute";
 import axios from "axios";
-=======
-
-
-
 
 //Main function
 function App() {

@@ -14,7 +14,6 @@ const EditPlant = (props) => {
   console.log("EditPlant wmp_plant_id: ", props);
   console.log("EditPlant myPlant: ", myPlant);
 
-
   const plantSchema = yup.object().shape({
     h2ofrequency: yup
       .number()
@@ -31,12 +30,9 @@ const EditPlant = (props) => {
     plant_species: yup.string().required("Required"),
   });
 
-    const wmp_plant_id = localStorage.getItem("wmp-plant_id");
-    const myPlant = props.plants.filter(plant => plant.plant_id === parseInt(wmp_plant_id, 10));
-    console.log("EditPlant props: ", props);
-    console.log("EditPlant wmp_plant_id: ", wmp_plant_id);
-    console.log("EditPlant myPlant: ", myPlant);
-
+  console.log("EditPlant props: ", props);
+  console.log("EditPlant wmp_plant_id: ", wmp_plant_id);
+  console.log("EditPlant myPlant: ", myPlant);
 
   const setFormErrors = (name, value) => {
     yup
@@ -70,19 +66,7 @@ const EditPlant = (props) => {
     isValid.then((res) => {
       setIsDisabled(!res);
     });
-
   }, [plant]);
-
-    const [plant, setPlant] = useState({
-        user_id: props.id,
-        plant_nickname: myPlant[0].plant_nickname,
-        plant_species: myPlant[0].plant_species,
-        h2ofrequency: myPlant[0].h2ofrequency,
-        plant_image: myPlant[0].plant_image,
-    });
-
- 
-
 
   const handleChange = (e) => {
     const { value, name } = e.target;
