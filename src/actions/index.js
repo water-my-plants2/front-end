@@ -34,7 +34,7 @@ export const fetchPlants = (id) => {
         dispatch(fetchStart());        
         axiosWithAuth()
             .get(`/api/users/${id}/plants`) 
-            .then(res => {console.log("ID: ", id);
+            .then(res => {console.log("response for fetch user plants: ", res);
 
                 dispatch(fetchSuccess(res.data));
             })
