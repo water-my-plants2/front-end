@@ -1,6 +1,5 @@
 import React from "react";
-import { NavLink, Switch, Route } from "react-router-dom";
-import Dummy from "./Dummy";
+import { NavLink } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import Footer from "./Footer";
 import svg from "../flower.svg";
@@ -25,7 +24,7 @@ function HomePage(props) {
       </div>
       <div className="homepage-content">
         <div className="homepage-imgwrap">
-          <img src={svg} className="homepage-img" />
+          <img src={svg} className="homepage-img" alt="homepage"/>
         </div>
         <div className="hero-text-wrap">
           <div className="hero-text-row1 row">

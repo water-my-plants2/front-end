@@ -20,7 +20,7 @@ function PlantListHeader(props) {
         <div className="pl-header-right">
           <div className="add-section">
             <Link
-              to={pathname == "/plantlist" ? "plantlist/add" : "/plantlist"}
+              to={pathname === "/plantlist" ? "plantlist/add" : "/plantlist"}
             >
               <button className="btn btn-primary">Add Plant</button>
             </Link>

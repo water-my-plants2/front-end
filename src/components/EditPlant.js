@@ -66,7 +66,7 @@ const EditPlant = (props) => {
     isValid.then((res) => {
       setIsDisabled(!res);
     });
-  }, [plant]);
+  }, [plant, plantSchema]);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
