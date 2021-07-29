@@ -160,7 +160,6 @@ const AddPlant = (props) => {
               marginTop: "1rem",
             }}
           >
-            {/* <Link to={"/plantlist"}> */}
             <button
               disabled={isDisabled}
               type="submit"
@@ -168,7 +167,6 @@ const AddPlant = (props) => {
             >
               Add
             </button>
-            {/* </Link> */}
             <Link to={`/plantlist`}>
               <button className="btn btn-danger">Cancel</button>
             </Link>

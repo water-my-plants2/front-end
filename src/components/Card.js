@@ -24,7 +24,7 @@ const Card = (props) => {
 
   return (
     <div class="plant-card">
-      <div className="plant-inner-wrap">
+      <div className="plant-inner-wrap ">
         <div class="box">
           <img className="plantimg" src={plant_image} alt="plant"></img>
         </div>

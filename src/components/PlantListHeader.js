@@ -10,10 +10,13 @@ const signOut = () => {
 function PlantListHeader(props) {
   return (
     <div>
-      <header className="pl-header">
+      <header
+        className="pl-header"
+        style={{ paddingLeft: "2rem", paddingRight: "2rem" }}
+      >
         <h1> Water My Plants</h1>{" "}
-        <Link to="/">
-          <button className="btn btn-danger pl-header-btn" onClick={signOut}>
+        <Link to="/" style={{ marginTop: "auto", marginBottom: "auto" }}>
+          <button className="btn btn-danger btn-sm" onClick={signOut}>
             Sign Out
           </button>
         </Link>
