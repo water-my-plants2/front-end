@@ -14,7 +14,7 @@ const PlantList = (props) => {
 
   useEffect(() => {
     props.dispatch(fetchPlants(user_id));
-  });
+  }, [user_id, props]);
 
   return (
     <div>
