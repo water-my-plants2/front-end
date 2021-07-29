@@ -19,7 +19,7 @@ function LoginTextField(props) {
           meta.touched && meta.error && "is-invalid"
         }`}
       />
-      <ErrorMessage name={field.name} component="p" className="signup-error" />
+      <ErrorMessage name={field.name} component="p" className="login-error" />
     </div>
   );
 }
@@ -46,7 +46,7 @@ function LoginForm(props) {
     >
       {(formik) => (
         <Form className="login-form">
-          <button type="submit" className="btn-dark login-btn">
+          <button type="submit" className="btn btn-primary">
             Log In
           </button>
           <LoginTextField

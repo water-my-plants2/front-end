@@ -1,54 +1,48 @@
 import React from "react";
-// import Styled from "styled-components";
 import { NavLink, Switch, Route } from "react-router-dom";
-// import { BrowserRouter as Router } from "react-router-dom";
 import Dummy from "./Dummy";
 import LoginForm from "./LoginForm";
-
-//Input styled component
-// const BoxStyle = Styled.input`
-  //   width: 90%;
-  //   padding-left: 1%;
-  //   padding-right: 1%;
-  //   height: 2vh;
-
-  // `;
+import Footer from "./Footer";
+import svg from "../flower.svg";
 
 function HomePage(props) {
   return (
     <div>
-      {/* Header Div to contain login fields, login button, signup button*/}
       <div className="headerDiv">
-        {/* Header */}
         <header className="header-wrap">
-          {/* H1 */}
           <div>
-            <h1> Water My Plants</h1>{" "}
+            <h1 className="login-title"> Water My Plants</h1>{" "}
           </div>
 
           <LoginForm login={props.login} />
-
-          {/* Sign up button */}
-          <div className="signup">
+          <div>
             <NavLink exact to="/Signup" className="ButtonStyle" id="signup">
-              {" "}
-              Sign Up!{" "}
+              <button className="btn btn-success">Sign Up!</button>
             </NavLink>
           </div>
         </header>
-
-        {/* Switch route */}
-        <Switch>
-          <Route pathname="/Signup" component={Dummy} />
-          <Route pathname="/Login" component={Dummy} />
-        </Switch>
+        <div className="header-blend"></div>
       </div>
-
-      <body>
-        <div> message goes here </div>
-      </body>
-
-      <footer></footer>
+      <div className="homepage-content">
+        <div className="homepage-imgwrap">
+          <img src={svg} className="homepage-img" />
+        </div>
+        <div className="hero-text-wrap">
+          <div className="hero-text-row1 row">
+            <h3 className="hero-text">What</h3>
+          </div>
+          <div className="hero-text-row2 row">
+            <h3 className="hero-text">You</h3>
+          </div>
+          <div className="hero-text-row3 row">
+            <h3 className="hero-text">Water</h3>
+          </div>
+          <div className="hero-text-row4 row">
+            <h3 className="hero-text">Grows...</h3>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
