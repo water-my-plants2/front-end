@@ -11,12 +11,12 @@ function Signup(props) {
     username: yup
       .string()
       .required("Username is Required")
-      .min(3, "Username Must be Over 3 Characters")
+      .min(3, "Must be Over 3 Characters")
       .max(25, "Username Must be Less Than 25 Characters"),
     password: yup
       .string()
       .required("Password is Required")
-      .min(8, "Password Mus be Over 8 Characters"),
+      .min(8, "Must be Over 8 Characters"),
     user_phone: yup
       .string()
       .required("Phone Number is Required")
@@ -78,10 +78,10 @@ function Signup(props) {
                 placeholder="optional"
                 className="signup-textfield"
               />
-              <button type="submit" className="btn-dark">
+              <button type="submit" className="btn btn-dark">
                 Register
               </button>
-              <button type="reset" className="btn-danger signup-btn-reset">
+              <button type="reset" className="btn btn-danger signup-btn-reset">
                 Reset
               </button>
             </Form>
