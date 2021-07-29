@@ -124,5 +124,4 @@ function App() {
 }
 
 //Export statement
-
 export default App;
