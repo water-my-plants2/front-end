@@ -1,25 +1,25 @@
 import "../index.css";
 import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { deletePlant } from "../actions";
+import { useHistory } from "react-router-dom";
+import { deletePlant } from "../actions/index"
 import Timer from "./Timer";
 import { gsap } from "gsap";
 
-const handleEditPlant = (plant) => {
-    console.log("handleEditPlant", plant);
-    localStorage.setItem("wmp-plant_id", plant.plant_id);
-    window.location.href = "/plantlist/edit";
-    // return (<EditPlant id={localStorage.getItem("wmp-id")} plant={plant} />)
-}
+
 
 
 const Card = (props) => {
   
-  const { plant_id, plant_nickname, plant_species, h2ofrequency, plant_image } =
-  props.plant;
+  const { plant_id, plant_nickname, plant_species, h2ofrequency, plant_image } = props.plant;
+  const { push } = useHistory();
   
+  const handleEditPlant = (plant) => {
+      localStorage.setItem("wmp-plant_id", plant.plant_id);
+      push("/plantlist/edit");
+      // return (<EditPlant id={localStorage.getItem("wmp-id")} plant={plant} />)
+  }
   const handleDeletePlant = (id) => {
-    console.log("handleDeletePlant", id);
     localStorage.setItem("wmp-plant_id", id);
     props.deletePlant(id);
     // return (<EditPlant id={localStorage.getItem("wmp-id")} plant={plant} />)

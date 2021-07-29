@@ -35,14 +35,12 @@ export const fetchPlants = (id) => {
         axiosWithAuth()
             .get(`/api/users/${id}/plants`) 
             .then(res => {console.log("response for fetch user plants: ", res);
-
                 dispatch(fetchSuccess(res.data));
             })
             .catch(err=>{
                 dispatch(fetchFail(err));
             });
     }
-        // dispatch(fetchSuccess(dummyData));
 };
 
 export const addPlant = (plant) => {

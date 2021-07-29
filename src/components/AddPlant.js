@@ -67,7 +67,6 @@ const AddPlant = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     stringToInteger(plant);
-    console.log("handleSubmit: ", plant);
     props.addPlant(plant);
     push("/plantlist");
     setIsDisabled(true);

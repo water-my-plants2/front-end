@@ -6,11 +6,13 @@ import "../App.css";
 import * as yup from "yup";
 
 const EditPlant = (props) => {
-    console.log("EditPlant props: ",props);   
+
     const wmp_plant_id = localStorage.getItem("wmp-plant_id");
-    console.log("EditPlant wmp_plant_id: ", wmp_plant_id);   
     const myPlant = props.plants.filter(plant => plant.plant_id === parseInt(wmp_plant_id, 10));
+    console.log("EditPlant props: ", props);
+    console.log("EditPlant wmp_plant_id: ", props);
     console.log("EditPlant myPlant: ", myPlant);
+
     const plantSchema = yup.object().shape({
         h2ofrequency: yup
         .number()
@@ -34,14 +36,14 @@ const EditPlant = (props) => {
     const { push } = useHistory();
     const [isDisabled, setIsDisabled] = useState(true);
     const [errors, setErrors] = useState({
-        user_id: props.user_id,
+        user_id: props.id,
         plant_nickname: "",
         plant_species: "",
         h2ofrequency: 0,
         plant_image: "",
     });
     const [plant, setPlant] = useState({
-        user_id: props.user_id,
+        user_id: props.id,
         plant_nickname: myPlant[0].plant_nickname,
         plant_species: myPlant[0].plant_species,
         h2ofrequency: myPlant[0].h2ofrequency,
@@ -67,7 +69,7 @@ const EditPlant = (props) => {
     const prepForPayload = plant => {
         return(
         setPlant({
-            user_id: parseInt(plant.user_id, 10), 
+            user_id: props.user_id, 
             plant_nickname: plant.plant_nickname,
             plant_species: plant.plant_species,
             h2ofrequency: parseInt(plant.h2ofrequency, 10),
@@ -177,7 +179,7 @@ const EditPlant = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return {
+ return {
     plants: state.plants,
   };
 };

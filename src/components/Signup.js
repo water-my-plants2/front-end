@@ -30,7 +30,6 @@ function Signup(props) {
       // validationSchema={schema}
 
       onSubmit={(values) => {
-        console.log("onSubmit", values);
         props.register(values);
         history.push("plantlist");
       }}
