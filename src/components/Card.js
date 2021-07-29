@@ -1,13 +1,9 @@
 import "../index.css";
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deletePlant } from "../actions/index"
 import Timer from "./Timer";
-import { gsap } from "gsap";
-
-
-
 
 const Card = (props) => {
   
@@ -20,6 +16,7 @@ const Card = (props) => {
       // return (<EditPlant id={localStorage.getItem("wmp-id")} plant={plant} />)
   }
   const handleDeletePlant = (id) => {
+    console.log("handleDeletePlant id passed: ", id);
     localStorage.setItem("wmp-plant_id", id);
     props.deletePlant(id);
     // return (<EditPlant id={localStorage.getItem("wmp-id")} plant={plant} />)

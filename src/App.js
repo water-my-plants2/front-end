@@ -14,7 +14,6 @@ import PlantList from "./components/PlantList.js";
 import HomePage from "./components/HomePage";
 import AddPlant from "./components/AddPlant";
 import EditPlant from "./components/EditPlant";
-import PrivateRoute from './components/PrivateRoute';
 import axios from 'axios';
 
 

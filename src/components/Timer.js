@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { isCompositeComponent } from "react-dom/test-utils";
 import swal from "sweetalert";
 
 // function Timer(props) {
@@ -27,7 +26,7 @@ import swal from "sweetalert";
 let readyPlantArr = [];
 class Timer extends Component {
   constructor(props) {
-    const { h2ofrequency, plant_nickname } = props;
+    const { h2ofrequency } = props;
     super(props);
     this.myRef = React.createRef();
     this.state = {
@@ -52,7 +51,7 @@ class Timer extends Component {
   };
 
   render() {
-    if (this.state.hours == 0) {
+    if (this.state.hours === 0) {
       readyPlantArr.push(`${this.props.plant_nickname}`);
       const readyPlants = Array.from(new Set(readyPlantArr)).join(", ");
       //   window.confirm(`It's time to water ${this.props.plant_nickname}`);

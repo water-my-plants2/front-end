@@ -10,7 +10,7 @@ const EditPlant = (props) => {
     const wmp_plant_id = localStorage.getItem("wmp-plant_id");
     const myPlant = props.plants.filter(plant => plant.plant_id === parseInt(wmp_plant_id, 10));
     console.log("EditPlant props: ", props);
-    console.log("EditPlant wmp_plant_id: ", props);
+    console.log("EditPlant wmp_plant_id: ", wmp_plant_id);
     console.log("EditPlant myPlant: ", myPlant);
 
     const plantSchema = yup.object().shape({
@@ -55,7 +55,7 @@ const EditPlant = (props) => {
         isValid.then((res) => {
         setIsDisabled(!res);
         });
-    }, [plant]);
+    }, [plantSchema, plant]);
 
     const handleChange = (e) => {
         const { value, name } = e.target;
