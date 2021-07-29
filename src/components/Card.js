@@ -5,9 +5,6 @@ import { useHistory } from "react-router-dom";
 import { deletePlant } from "../actions/index";
 import Timer from "./Timer";
 
-
-
-
 const Card = (props) => {
   const { plant_id, plant_nickname, plant_species, h2ofrequency, plant_image } =
     props.plant;

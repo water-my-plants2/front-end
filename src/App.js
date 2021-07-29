@@ -81,7 +81,7 @@ function App() {
     <div className="App">
       <Router>
         {!sessionInfo.authenticated ? (
-          <Link to="/">Login</Link>
+          <Link to="/"></Link>
         ) : (
           <Link to="/" onClick={logout}>
             Logout
