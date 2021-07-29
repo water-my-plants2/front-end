@@ -5,8 +5,10 @@ function TextField({ label, type, ...props }) {
   const [field, meta] = useField(props);
   //   const { label, name, type } = props;
   return (
-    <div>
-      <label htmlFor={field.name}>{label}</label>
+    <div className="signup-textfield">
+      <label htmlFor={field.name} style={{ textAlign: "left" }}>
+        {label}
+      </label>
       <input
         type={type}
         {...field}

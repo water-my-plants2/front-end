@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "./TextField";
 import * as yup from "yup";
@@ -47,7 +48,14 @@ function Signup(props) {
       {(formik) => {
         return (
           <div className="signup-wrap">
-            <h1>Sign Up</h1>
+            <div className="signup-top">
+              <h1>Sign Up</h1>
+              <Link to="/">
+                <button type="submit" className="btn btn-danger ">
+                  Back
+                </button>
+              </Link>
+            </div>
 
             <Form>
               <TextField
@@ -77,7 +85,7 @@ function Signup(props) {
                 placeholder="optional"
                 className="signup-textfield"
               />
-              <button type="submit" className="btn btn-dark">
+              <button type="submit" className="btn btn-primary">
                 Register
               </button>
               <button type="reset" className="btn btn-danger signup-btn-reset">
