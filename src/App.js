@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  Link,
+  Link
 } from "react-router-dom";
 
 // import Dummy from "./components/Dummy";
