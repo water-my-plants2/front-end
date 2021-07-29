@@ -19,7 +19,7 @@ function LoginTextField(props) {
           meta.touched && meta.error && "is-invalid"
         }`}
       />
-      <ErrorMessage name={field.name} component="p" className="signup-error" />
+      <ErrorMessage name={field.name} component="p" className="login-error" />
     </div>
   );
 }

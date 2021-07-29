@@ -93,6 +93,12 @@ body {
   transform: translateY(4rem);
 }
 
+.login-error {
+  position: absolute;
+  color: red;
+  font-size: 0.7rem;
+}
+
 .signup-top {
   display: flex;
   align-items: center;
