@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { ErrorMessage, Formik, Form, useField } from "formik";
-import TextField from "./TextField";
 import * as yup from "yup";
 import "../App.css";
 
 function LoginTextField(props) {
   const [field, meta] = useField(props);
-  const { label, name, type } = props;
+  const { type } = props;
   return (
     <div>
       <input
@@ -27,7 +26,6 @@ function LoginTextField(props) {
 
 function LoginForm(props) {
   const history = useHistory();
-  const [hasLabel, setHasLabel] = useState(false);
 
   const schema = yup.object({
     username: yup.string().required("Required"),
@@ -56,7 +54,6 @@ function LoginForm(props) {
             type="text"
             name="username"
             className="login-user-input login-input"
-            hasLabel={hasLabel}
             placeholder="Username"
           />
           <LoginTextField
@@ -64,7 +61,6 @@ function LoginForm(props) {
             type="password"
             name="password"
             className="login-pass-input login-input"
-            hasLabel={hasLabel}
             placeholder="Password"
           />
         </Form>

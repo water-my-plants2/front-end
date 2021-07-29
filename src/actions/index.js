@@ -1,5 +1,4 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
-import axios from 'axios';
 
 export const ADD_PLANT = "ADD_PLANT";
 export const EDIT_PLANT = "EDIT_PLANT";
@@ -44,7 +43,15 @@ export const fetchPlants = (id) => {
 };
 
 export const addPlant = (plant) => {
-    return({type:ADD_PLANT, payload:plant});
+    // axiosWithAuth()
+    //     .post("api/plants", plant) 
+    //     .then(resp => { console.log("add plant response: ", resp)
+            return({type:ADD_PLANT, payload:plant});         
+        // })
+        // .catch(err=>{
+        //     console.log(err)
+        // });
+    
 }
 
 export const editPlant = (plant, id) => {

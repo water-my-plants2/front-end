@@ -12,11 +12,13 @@ const PlantList = (props) => {
 
   useEffect(() => {
     props.dispatch(fetchPlants(user_id));
-  }, []);
+  });
 
   return (
     <div>
       <PlantListHeader />
+
+
 
       <div class="card-section">
         {plants.map((plant) => (

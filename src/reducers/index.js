@@ -63,23 +63,34 @@ switch(action.type) {
         });
         return {
             ...state,
-            plants: state.plants.filter(plant=>(action.payload !== plant.plant_id))
+            plants: state.plants.filter(plant=>(plant.plant_id !== action.payload))
         }
     case ADD_PLANT:
-        let newPlant = {};
+        const id = localStorage.getItem("wmp-id");
         axiosWithAuth()
         .post("api/plants", action.payload) 
-        .then(resp => { console.log("add plant response: ", resp);
-            newPlant = resp.data;
-            // dispatch(fetchSuccess(resp.data));
+        .then(resp => { console.log("add plant response: ", resp)
+            axiosWithAuth()
+                .get(`/api/users/${id}/plants`) 
+                .then(res => {console.log("response for fetch user plants: ", res);
+                    return({
+                        ...state,
+                        isLoading: false,
+                        plants: res.data
+                    })
+                })
+                .catch(err=>{
+                    // dispatch(fetchFail(err));
+                })           
         })
         .catch(err=>{
             // dispatch(fetchFail(err));
         });
         return {
             ...state,
-            plants: [...state.plants, newPlant]
-        }    
+            plants: [...state.plants, action.payload]
+        }
+               
     case EDIT_PLANT:
         console.log("edit plant action.payload: ", action.payload);
         axiosWithAuth()
