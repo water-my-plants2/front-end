@@ -6,71 +6,88 @@ import "../App.css";
 import * as yup from "yup";
 
 const EditPlant = (props) => {
-  const plantSchema = yup.object().shape({
-    h2ofrequency: yup
-      .number()
-      .required("Required")
-      .min(1, "Must be at least 1"),
-    // plant_image: yup.string().notRequired(),
-    plant_nickname: yup.string().required("Required"),
-    plant_species: yup.string().required("Required"),
-  });
-
-  const setFormErrors = (name, value) => {
-    yup
-      .reach(plantSchema, name)
-      .validate(value)
-      .then((valid) => {
-        setErrors({ ...errors, [name]: "" });
-      })
-      .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
-  };
-
-  const { push } = useHistory();
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [errors, setErrors] = useState({
-    user_id: props.user_id,
-    plant_nickname: "",
-    plant_species: "",
-    h2ofrequency: 0,
-    // plant_image: "",
-  });
-  const [plant, setPlant] = useState({
-    user_id: props.user_id,
-    plant_nickname: props.plant.plant_nickname,
-    plant_species: props.plant.plant_species,
-    h2ofrequency: props.plant.h2ofrequency
-    // plant_image: "",
-  });
-
-  useEffect(() => {
-    const isValid = plantSchema.isValid(plant);
-    isValid.then((res) => {
-      setIsDisabled(!res);
+    console.log("EditPlant props: ",props);   
+    const wmp_plant_id = localStorage.getItem("wmp-plant_id");
+    console.log("EditPlant wmp_plant_id: ", wmp_plant_id);   
+    const myPlant = props.plants.filter(plant => plant.plant_id === parseInt(wmp_plant_id, 10));
+    console.log("EditPlant myPlant: ", myPlant);
+    const plantSchema = yup.object().shape({
+        h2ofrequency: yup
+        .number()
+        .required("Required")
+        .min(1, "Must be at least 1"),
+        plant_image: yup.string().notRequired(),
+        plant_nickname: yup.string().required("Required"),
+        plant_species: yup.string().required("Required"),
     });
-  }, [plant]);
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setPlant({
-      ...plant,
-      [e.target.name]: e.target.value,
+    const setFormErrors = (name, value) => {
+        yup
+        .reach(plantSchema, name)
+        .validate(value)
+        .then((valid) => {
+            setErrors({ ...errors, [name]: "" });
+        })
+        .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
+    };
+
+    const { push } = useHistory();
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [errors, setErrors] = useState({
+        user_id: props.user_id,
+        plant_nickname: "",
+        plant_species: "",
+        h2ofrequency: 0,
+        plant_image: "",
     });
-    setFormErrors(name, value);
-  };
+    const [plant, setPlant] = useState({
+        user_id: props.user_id,
+        plant_nickname: myPlant[0].plant_nickname,
+        plant_species: myPlant[0].plant_species,
+        h2ofrequency: myPlant[0].h2ofrequency,
+        plant_image: myPlant[0].plant_image,
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(plant);
-    props.editPlant(plant);
-    push("/plantlist");
-    setIsDisabled(true);
-  };
+    useEffect(() => {
+        const isValid = plantSchema.isValid(plant);
+        isValid.then((res) => {
+        setIsDisabled(!res);
+        });
+    }, [plant]);
 
-  const { plant_nickname, plant_species, h2ofrequency } = plant;
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+        setPlant({
+        ...plant,
+        [e.target.name]: e.target.value,
+        });
+        setFormErrors(name, value);
+    };
+
+    const prepForPayload = plant => {
+        return(
+        setPlant({
+            user_id: parseInt(plant.user_id, 10), 
+            plant_nickname: plant.plant_nickname,
+            plant_species: plant.plant_species,
+            h2ofrequency: parseInt(plant.h2ofrequency, 10),
+            plant_image: plant.plant_image
+        }));
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        prepForPayload(plant);
+        props.editPlant(plant, wmp_plant_id);
+        push("/plantlist");
+        setIsDisabled(true);
+        localStorage.removeItem("wmp-plant_id");
+    };
+
+  const { plant_nickname, plant_species, h2ofrequency, plant_image } = plant;
   return (
     <div className="addplant-wrap">
-      <h1 className="addplant-title">Add a Plant</h1>
+      <h1 className="addplant-title">Edit Plant</h1>
       <form onSubmit={handleSubmit} className="addplant-form">
         <div>
           <label>Nickname</label>
@@ -120,7 +137,7 @@ const EditPlant = (props) => {
           </div>
           <p className="addplant-error">{errors.h2ofrequency}</p>
         </div>
-        {/* <div>
+        <div>
           <label>Image URL</label>
           <input
             value={plant_image}
@@ -131,7 +148,7 @@ const EditPlant = (props) => {
             placeholder="optional"
           />
           <p className="addplant-error">{errors.plant_image}</p>
-        </div> */}
+        </div>
         <div>
           <div
             className="btnContainer"
@@ -146,7 +163,7 @@ const EditPlant = (props) => {
           >
             {/* <Link to={"/plantlist"}> */}
             <button disabled={isDisabled} type="submit" className="btn-dark">
-              Add
+              Save
             </button>
             {/* </Link> */}
             <Link to={`/plantlist`}>

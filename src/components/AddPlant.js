@@ -60,8 +60,9 @@ const AddPlant = (props) => {
   };
 
   const stringToInteger = plant => {
-    setPlant({...plant, user_id: parseInt(plant.user_id, 10), h2ofrequency: parseInt(plant.h2ofrequency, 10)});
-  }
+    return(
+    setPlant({...plant, user_id: parseInt(plant.user_id, 10), h2ofrequency: parseInt(plant.h2ofrequency, 10)})
+    )};
 
   const handleSubmit = (e) => {
     e.preventDefault();

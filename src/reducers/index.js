@@ -9,23 +9,23 @@ import axiosWithAuth from '../utils/axiosWithAuth.js';
 
 export const initialState = {
     plants: [{
-        plant_id: 1,
-        plant_nickname: "Spider Plant initial",
-        plant_species: "Chlorophytum Comosum",
-        h2ofrequency: 3,
-        plant_image: ""
-    },{
-        plant_id: 2,
-        plant_nickname: "Aloe Vera initial",
-        plant_species: "Aloe",
-        h2ofrequency: 1,
-        plant_image: ""
-    },{
-        plant_id: 3,
-        plant_nickname: "Peace Lily initial",
-        plant_species: "Spathiphyllum Wallisii",
-        h2ofrequency: 5,
-        plant_image: ""
+    //     plant_id: 1,
+    //     plant_nickname: "Spider Plant initial",
+    //     plant_species: "Chlorophytum Comosum",
+    //     h2ofrequency: 3,
+    //     plant_image: ""
+    // },{
+    //     plant_id: 2,
+    //     plant_nickname: "Aloe Vera initial",
+    //     plant_species: "Aloe",
+    //     h2ofrequency: 1,
+    //     plant_image: ""
+    // },{
+    //     plant_id: 3,
+    //     plant_nickname: "Peace Lily initial",
+    //     plant_species: "Spathiphyllum Wallisii",
+    //     h2ofrequency: 5,
+    //     plant_image: ""
     }],
     isLoading: false,
     dataError: "",
@@ -52,8 +52,18 @@ switch(action.type) {
             isLoading: false
     });                
     case DELETE_PLANT:
+        axiosWithAuth()
+        .delete(`api/plants/${action.payload}`, {plant_id: action.payload}) 
+        .then(resp => {console.log("delete plant response: ", resp);
+            // dispatch(fetchSuccess(resp.data));
+        })
+        .catch(err=>{
+            console.log(err);
+            // dispatch(fetchFail(err));
+        });
         return {
-            plants: state.plants.filter(item=>(action.payload !== item.id))
+            ...state,
+            plants: state.plants.filter(plant=>(action.payload !== plant.plant_id))
         }
     case ADD_PLANT:
         console.log("add plant action.payload: ", action.payload);
@@ -77,12 +87,13 @@ switch(action.type) {
             // dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
-            // dispatch(fetchFail(err));
+            console.log(err);
         });
+        const noEditedPlant = state.plants.filter(plant => plant.plant_id !== action.payload.plant_id)
+        console.log("reducers EDIT_PLANT noEditedPlant: ", noEditedPlant);
         return {
             ...state,
-            plants: [...state.plants, action.payload] //this will add a new plant record; not what we want
-            //probably need to delete old record (where plant_id = plant_id coming from response,) then add new
+            plants: [...noEditedPlant, action.payload] 
         }        
     case SET_VALUE_TO_ERROR_MESSAGE:
         return({

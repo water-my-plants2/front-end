@@ -66,14 +66,7 @@ function App() {
     console.log("register values: ", values);
     axios.post('https://watermyplants02.herokuapp.com/api/auth/register', values)
       .then(res => {console.log("register response: ", res); 
-        // if (res.statusText === "OK") {
-        //   localStorage.setItem("token", res.data.token);
-          setSessionInfo({authenticated: false, id: res.data.user_id});
-        //   window.location.href = "/plantlist";
-        // } else {
-        //   localStorage.removeItem("token");
-        // }
-        // console.log("token", localStorage.getItem("token"));
+         setSessionInfo({authenticated: false, id: res.data.user_id});
      })
       .catch(err => {
         setSessionInfo({authenticated: false, id: null});
