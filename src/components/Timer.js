@@ -48,7 +48,7 @@ class Timer extends Component {
       this.setState((prevState) => ({
         hours: prevState.hours - 1,
       }));
-    }, 1000);
+    }, 3600000);
   };
 
   render() {
