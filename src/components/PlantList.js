@@ -14,13 +14,13 @@ const PlantList = (props) => {
 
   useEffect(() => {
     props.dispatch(fetchPlants(user_id));
-  }, []);
+  });
 
   return (
     <div>
       <PlantListHeader />
       <div class="add-section">
-        <Link to={pathname == "/plantlist" ? "plantlist/add" : "/plantlist"}>
+        <Link to={pathname === "/plantlist" ? "plantlist/add" : "/plantlist"}>
           <button className="btn-primary btn-addplant">Add Plant</button>
         </Link>
       </div>
