@@ -18,15 +18,27 @@ body {
 
 header {
   background-color: lightblue;
-  height: 10vh;
+  height: 5rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  align-items: baseline;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  align-items: center;
+
   color: white;
-  border: solid black 2px;
-  padding-right: 25px;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-top: 1rem;
+}
+
+.login-title {
+  font-family: "Style Script", cursive;
+  margin-bottom: 0px;
+  text-shadow: rgb(18, 112, 156) 0px 0px 10px;
+  font-size: 2.5rem;
+}
+
+.login-right {
+  display: flex;
 }
 
 .labelDiv {
@@ -39,34 +51,21 @@ header {
   height: 3vh;
 }
 
-h1 {
-  display: flex;
-  flex-direction: row;
-  font-size: 25px;
-  justify-content: left;
-
-  padding-right: 40px;
-}
-
 body {
   display: flex;
   flex-direction: column;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-position: center;
-  color: #3a5f0b;
+  /* color: #3a5f0b; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 
-  background: url(back5.jpg);
+  /* background: url(back5.jpg); */
+  background: linear-gradient(to bottom, transparent, 80%, rgb(195, 195, 186)),
+    url(back5.jpg);
   /* overflow: hidden; */
-}
-
-.ButtonStyle {
-  background-color: #3a5f0b;
-  font-size: 1rem;
-  color: white;
 }
 
 .signup-wrap {
@@ -91,6 +90,19 @@ body {
   position: absolute;
   color: red;
   font-size: 0.7rem;
+  transform: translateY(4rem);
+}
+
+.signup-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-blend {
+  width: 100%;
+  height: 2rem;
+  background: linear-gradient(lightblue, rgb(233, 232, 230));
 }
 
 .login-form {
@@ -131,6 +143,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .addplant-wrap div {
@@ -143,6 +156,8 @@ body {
 .addplant-title {
   margin-bottom: 1rem;
   padding: 0px;
+  text-align: left;
+  width: 20rem;
 }
 
 .addplant-waterinputtitle {
@@ -182,4 +197,87 @@ body {
   float: right;
   position: absolute;
   left: 0;
+}
+
+.footer {
+  /* background-color: rgb(195, 195, 186); */
+  height: 7rem;
+  margin: 0px;
+  padding-top: 2rem;
+}
+
+.footerText {
+  margin: 0px;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: rgb(82, 82, 82) 0px 0px 4px;
+}
+.footer a {
+  text-decoration: none;
+}
+
+.footerText:hover {
+  color: rgb(241, 239, 239);
+  text-shadow: rgb(158, 158, 158) 0px 0px 4px;
+}
+
+.homepage-content {
+  height: 37rem;
+}
+
+.homepage-imgwrap {
+  width: 40rem;
+  border-radius: 2rem;
+  /* height: 20rem; */
+  /* background-color: red; */
+}
+
+.homepage-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homepage-img {
+  width: 100%;
+  /* border-radius: 2rem; */
+  opacity: 0.8;
+}
+
+.hero-text-wrap {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(176, 175, 179);
+  height: 25rem;
+  width: 20rem;
+  margin-left: 2rem;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.row {
+  font-family: "Style Script", cursive;
+  /* background-color: red; */
+  width: 80%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-end; */
+  text-align: left;
+
+  /* margin: 0px; */
+}
+
+.row h3 {
+  margin: 0px;
+  width: 100%;
+  font-size: 3rem;
+  /* height: 25%; */
+}
+
+.hero-text-row2,
+.hero-text-row4 {
+  width: 60%;
+  align-self: flex-end;
 }

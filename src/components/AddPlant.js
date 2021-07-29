@@ -9,8 +9,14 @@ const AddPlant = (props) => {
   const plantSchema = yup.object().shape({
     h2ofrequency: yup
       .number()
+      .typeError("Must be a Number")
       .required("Required")
-      .min(1, "Must be at least 1"),
+      .test("GreaterThanZero", "Must be Greater Than 0", function (value) {
+        return value > 0;
+      })
+      .test("isInteger", "Must be an Integer", function (value) {
+        return Number.isInteger(value);
+      }),
     plant_image: yup.string().notRequired(),
     plant_nickname: yup.string().required("Required"),
     plant_species: yup.string().required("Required"),
@@ -32,7 +38,7 @@ const AddPlant = (props) => {
     user_id: props.user_id,
     plant_nickname: "",
     plant_species: "",
-    h2ofrequency: 0,
+    h2ofrequency: "",
     plant_image: "",
   });
   const [plant, setPlant] = useState({
@@ -59,10 +65,13 @@ const AddPlant = (props) => {
     setFormErrors(name, value);
   };
 
-  const stringToInteger = plant => {
-    return(
-    setPlant({...plant, user_id: parseInt(plant.user_id, 10), h2ofrequency: parseInt(plant.h2ofrequency, 10)})
-    )};
+  const stringToInteger = (plant) => {
+    return setPlant({
+      ...plant,
+      user_id: parseInt(plant.user_id, 10),
+      h2ofrequency: parseInt(plant.h2ofrequency, 10),
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,7 +87,7 @@ const AddPlant = (props) => {
       <h1 className="addplant-title">Add a Plant</h1>
       <form onSubmit={handleSubmit} className="addplant-form">
         <div>
-          <label>Nickname</label>
+          <label style={{ textAlign: "left" }}>Nickname</label>
           <input
             value={plant_nickname}
             onChange={handleChange}
@@ -89,7 +98,7 @@ const AddPlant = (props) => {
           <p className="addplant-error">{errors.plant_nickname}</p>
         </div>
         <div>
-          <label>Species</label>
+          <label style={{ textAlign: "left" }}>Species</label>
           <input
             value={plant_species}
             onChange={handleChange}
@@ -123,10 +132,12 @@ const AddPlant = (props) => {
             />
             <h2 className="addplant-waterinputtitle">Day(s)</h2>
           </div>
-          <p className="addplant-error">{errors.h2ofrequency}</p>
+          <p className="addplant-error" style={{ right: "0", left: "0" }}>
+            {errors.h2ofrequency}
+          </p>
         </div>
         <div>
-          <label>Image URL</label>
+          <label style={{ textAlign: "left" }}>Image URL</label>
           <input
             value={plant_image}
             onChange={handleChange}
@@ -144,18 +155,20 @@ const AddPlant = (props) => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              width: "40%",
+              width: "50%",
               margin: "auto",
               marginTop: "1rem",
             }}
           >
-            {/* <Link to={"/plantlist"}> */}
-            <button disabled={isDisabled} type="submit" className="btn-dark">
+            <button
+              disabled={isDisabled}
+              type="submit"
+              className="btn btn-success"
+            >
               Add
             </button>
-            {/* </Link> */}
             <Link to={`/plantlist`}>
-              <button className="btn-danger">Cancel</button>
+              <button className="btn btn-danger">Cancel</button>
             </Link>
           </div>
         </div>
