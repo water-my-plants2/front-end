@@ -21,7 +21,7 @@ const PlantList = (props) => {
       <PlantListHeader />
       <div class="add-section">
         <Link to={pathname == "/plantlist" ? "plantlist/add" : "/plantlist"}>
-          <button className="btn-primary btn-addplant">Add Plant</button>
+          <button className="btn btn-primary btn-addplant">Add Plant</button>
         </Link>
       </div>
       <div class="card-section">

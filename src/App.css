@@ -131,6 +131,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .addplant-wrap div {
@@ -143,6 +144,8 @@ body {
 .addplant-title {
   margin-bottom: 1rem;
   padding: 0px;
+  text-align: left;
+  width: 20rem;
 }
 
 .addplant-waterinputtitle {

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const signOut = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("wmp-id");
-}
+};
 
 function PlantListHeader(props) {
   return (
@@ -13,7 +13,9 @@ function PlantListHeader(props) {
       <header className="pl-header">
         <h1> Water My Plants</h1>{" "}
         <Link to="/">
-          <button className="btn-danger pl-header-btn" onClick={signOut}>Sign Out</button>
+          <button className="btn btn-danger pl-header-btn" onClick={signOut}>
+            Sign Out
+          </button>
         </Link>
       </header>
     </div>
