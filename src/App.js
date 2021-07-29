@@ -34,7 +34,6 @@ function App() {
   };
 
   const login = (credentials) => {
-    console.log("login credentials: ", credentials);
     axios.post('https://watermyplants02.herokuapp.com/api/auth/login', credentials)
       .then(res => {console.log("login response.data.user_id: ", res.data.user_id); 
         if (res.statusText === "OK") {
@@ -46,7 +45,6 @@ function App() {
         } else {
           localStorage.removeItem("token");
         }
-        console.log("token", localStorage.getItem("token"));
      })
       .catch(err => {
         setSessionInfo({authenticated: false, id: 0});
@@ -108,7 +106,7 @@ function App() {
           }
         }} />
         <Route path="/plantlist/edit" render={(props)=> {
-          if (localStorage.getItem('token')) {
+          if (localStorage.getItem('token')&& localStorage.getItem("wmp-plant_id")) {
             return <EditPlant {...props} id={localStorage.getItem("wmp-id")}/>
           } else {
               return <Redirect to="/"/>

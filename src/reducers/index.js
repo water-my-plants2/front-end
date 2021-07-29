@@ -54,7 +54,7 @@ switch(action.type) {
     case DELETE_PLANT:
         axiosWithAuth()
         .delete(`api/plants/${action.payload}`, {plant_id: action.payload}) 
-        .then(resp => {console.log("delete plant response: ", resp);
+        .then(resp => { console.log("delete plant response: ", resp);
             // dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
@@ -66,10 +66,11 @@ switch(action.type) {
             plants: state.plants.filter(plant=>(action.payload !== plant.plant_id))
         }
     case ADD_PLANT:
-        console.log("add plant action.payload: ", action.payload);
+        let newPlant = {};
         axiosWithAuth()
         .post("api/plants", action.payload) 
-        .then(resp => {console.log("add plant response: ", resp);
+        .then(resp => { console.log("add plant response: ", resp);
+            newPlant = resp.data;
             // dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
@@ -77,20 +78,20 @@ switch(action.type) {
         });
         return {
             ...state,
-            plants: [...state.plants, action.payload]
+            plants: [...state.plants, newPlant]
         }    
     case EDIT_PLANT:
         console.log("edit plant action.payload: ", action.payload);
         axiosWithAuth()
         .put(`/api/plants/${action.plant_id}`, action.payload) 
-        .then(resp => {console.log("edit plant response: ", resp);
+        .then(resp => { //console.log("edit plant response: ", resp);
             // dispatch(fetchSuccess(resp.data));
         })
         .catch(err=>{
             console.log(err);
         });
-        const noEditedPlant = state.plants.filter(plant => plant.plant_id !== action.payload.plant_id)
-        console.log("reducers EDIT_PLANT noEditedPlant: ", noEditedPlant);
+        const noEditedPlant = state.plants.filter((plant) => plant.plant_id !== parseInt(action.plant_id, 10))
+        action.payload = {...action.payload, plant_id: parseInt(action.plant_id, 10)}
         return {
             ...state,
             plants: [...noEditedPlant, action.payload] 
