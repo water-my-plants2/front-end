@@ -18,13 +18,14 @@ const PlantList = (props) => {
     <div>
       <PlantListHeader />
 
-
-
       <div class="card-section">
         {plants.map((plant) => (
           <Card key={plant.plant_id} plant={plant} id={user_id} />
         ))}
       </div>
+      <p>
+        Note: The Notification Timer has been Sped up for Demonstration Purposes
+      </p>
       <Footer />
     </div>
   );
