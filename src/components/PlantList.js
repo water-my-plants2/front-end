@@ -8,11 +8,11 @@ import Footer from "./Footer";
 
 const PlantList = (props) => {
   const user_id = localStorage.getItem("wmp-id");
-  const { plants, errorMessage } = props;
+  const { plants } = props;
 
   useEffect(() => {
     props.dispatch(fetchPlants(user_id));
-  });
+  }, []);
 
   return (
     <div>
