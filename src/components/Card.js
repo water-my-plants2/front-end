@@ -13,13 +13,11 @@ const Card = (props) => {
   const handleEditPlant = (plant) => {
     localStorage.setItem("wmp-plant_id", plant.plant_id);
     push("/plantlist/edit");
-    // return (<EditPlant id={localStorage.getItem("wmp-id")} plant={plant} />)
   };
   const handleDeletePlant = (id) => {
     console.log("handleDeletePlant id passed: ", id);
     localStorage.setItem("wmp-plant_id", id);
     props.deletePlant(id);
-    // return (<EditPlant id={localStorage.getItem("wmp-id")} plant={plant} />)
   };
 
   return (
