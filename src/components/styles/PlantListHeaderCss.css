@@ -32,3 +32,10 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+@media only screen and (max-width: 580px) {
+  .pl-header {
+    flex-direction: column;
+    height: 8rem;
+  }
+}
