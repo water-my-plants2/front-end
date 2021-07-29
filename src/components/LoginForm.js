@@ -8,7 +8,7 @@ function LoginTextField(props) {
   const [field, meta] = useField(props);
   const { type } = props;
   return (
-    <div>
+    <div className="loginTextField">
       <input
         style={{ width: "10rem" }}
         type={type}

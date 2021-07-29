@@ -24,7 +24,7 @@ function HomePage(props) {
       </div>
       <div className="homepage-content">
         <div className="homepage-imgwrap">
-          <img src={svg} className="homepage-img" alt="homepage"/>
+          <img src={svg} className="homepage-img" alt="homepage" />
         </div>
         <div className="hero-text-wrap">
           <div className="hero-text-row1 row">
