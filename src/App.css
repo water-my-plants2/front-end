@@ -258,18 +258,20 @@ body {
 .hero-text-wrap {
   display: flex;
   flex-direction: column;
-  background-color: rgb(176, 175, 179);
+  background-color: transparent;
   height: 25rem;
   width: 20rem;
   margin-left: 4rem;
   border-radius: 2rem;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+  /* opacity: 0; */
 }
 
 .row {
   font-family: "Style Script", cursive;
+  text-shadow: 2px 2px #ffffff;
   /* background-color: red; */
   width: 80%;
   height: 20%;
@@ -331,7 +333,9 @@ body {
 
 @media only screen and (max-width: 550px) {
   .homepage-imgwrap {
-    display: none;
+    /* display: none; */
+    width: 80%;
+    margin-top: 2rem;
   }
 
   .login-form {
